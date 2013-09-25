@@ -12,7 +12,9 @@
         </controllerFile>
         <controllerFile controllerName="Error"/>
       </controllersDirectory>
-      <formsDirectory/>
+      <formsDirectory>
+        <formFile formName="Estudiante"/>
+      </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>
           <layoutScriptFile layoutName="layout"/>
