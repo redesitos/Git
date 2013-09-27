@@ -40,14 +40,14 @@
 	border: 1px solid #999;
 	display: none;
 }
-
+/* css que controla el color de los errores en el form*/
 .formError .formErrorContent {
 	width: 100%;
-	background: blueviolet;
+	background: #66afe9;
 	position:relative;
-	color: #fff;
+	color: white;
 	min-width: 120px;
-	font-size: 11px;
+	font-size: 12px;
 	border: 2px solid #ddd;
 	box-shadow: 0 0 6px #000;
 	-moz-box-shadow: 0 0 6px #000;
@@ -99,7 +99,7 @@ body.rtl .formError .formErrorArrow {
 	margin: 0px 0 0 12px;
 	top:2px;
 }
-
+/*segunda parte del control de error en el formulario*/
 .formError .formErrorArrow div {
 	border-left: 2px solid #ddd;
 	border-right: 2px solid #ddd;
@@ -109,7 +109,7 @@ body.rtl .formError .formErrorArrow {
 	-o-box-shadow: 0 2px 3px #444;
 	font-size: 0px;
 	height: 1px;
-	background: blueviolet;
+	background: #66afe9;
 	margin: 0 auto;
 	line-height: 0;
 	font-size: 0;
