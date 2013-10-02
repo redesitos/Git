@@ -22,6 +22,10 @@
       </layoutsDirectory>
       <modelsDirectory>
         <modelFile modelName="Guestbook.php"/>
+        <dbTableDirectory>
+          <dbTableFile dbTableName="User"/>
+        </dbTableDirectory>
+        <modelFile modelName="Register"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
