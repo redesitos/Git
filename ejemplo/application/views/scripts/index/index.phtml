@@ -1,0 +1,19 @@
+
+<h1>ESTA ES UNA VISTA Y AQUI SE COLOCA EL CODIGO HTML DE NUESTROS FORMULARIOS O TODO
+LO QUE TENGA QUE VER CON INTERFAZ GRAFICA O DE USUARIO</h1>
+
+
+<br /><br />
+<div id="view-content">
+	<H1>Estamos en la vista del: Controlador <b>Index</b> y accion <b>index</b></H1>
+        <!--Aqui en esta vista, podemos apreciar como se toma la base url y se completa el enlace para 
+        direccionar a cualquier accion de cualquier controlador.
+        En este caso, vamos a ir a las acciones crear, consultar, actualizar y eliminar del 
+        controlador Estudiante, la accion index que es por defecto la vamos a dejar intacta, pero se 
+        hace de la misma manera -->
+        <a href="<?php echo $this->baseUrl; ?>/Estudiante/crear">Crear | </a>
+        
+        <a href="<?php echo $this->baseUrl; ?>/Estudiante/consultar">Consultar - Actualizar | </a>
+        <!--<a href="<?php //echo $this->baseUrl; ?>/Estudiante/actualizar">Actualizar</a>-->
+        <a href="<?php echo $this->baseUrl; ?>/Estudiante/eliminar">Eliminar</a>
+</div>

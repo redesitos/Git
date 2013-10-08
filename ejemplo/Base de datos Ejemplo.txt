@@ -1,0 +1,18 @@
+
+create database ejemplo;
+
+use ejemplo;
+
+CREATE  TABLE IF NOT EXISTS `ejemplo`.`estudiantes` (
+  `codigoEstudiante` BIGINT NOT NULL ,
+  `nombres` VARCHAR(100) NOT NULL ,
+  `fechaInscripcion` DATE NOT NULL ,
+  `matriculaValor` DECIMAL NOT NULL ,
+  `personasCargo` TINYINT(1) NOT NULL ,
+  `descripcion` VARCHAR(100) NULL DEFAULT 'Ninguna' ,
+  `nroAsigPerdidas` INT NOT NULL ,
+  PRIMARY KEY (`codigoEstudiante`) )
+ENGINE = InnoDB
+COMMENT = '			r';
+
+

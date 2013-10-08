@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Eliminar Estudiante</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+
+        <!-- VALIDAR FORMULARIOS ESTILO----------------------------------------------->
+        <link href="<?php echo $this->baseUrl; ?>/archivos/css/validaFormJQ.css" rel="stylesheet" type="text/css" />
+        <!---------------------------------------------------------------------------->
+
+    </head>
+    <body>
+        <div>
+            <H1>Eliminar Estudiante</H1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre completo</th>
+                        <th>Fecha Incripción</th>
+                        <th>Valor Matrícula</th>
+                        <th>Personas a Cargo?</th>
+                        <th>Descripción Personas a cargo</th>
+                        <th>N° Asig. Perdidas</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    for ($i = 0; $i < count($this->consulta); $i++) {
+                        $arrayTem = $this->consulta[$i];
+                        echo "<tr>";
+                        echo "<td>" . $arrayTem["codigoEstudiante"] . "</td> ";
+                        echo "<td>" . $arrayTem["nombres"] . "</td> ";
+                        echo "<td>" . $arrayTem["fechaInscripcion"] . "</td> ";
+                        echo "<td>" . $arrayTem["matriculaValor"] . "</td> ";
+                        if ($arrayTem["personasCargo"] == 1) {
+                            echo "<td>Si</td> ";
+                        } else if ($arrayTem["personasCargo"] == 0) {
+                            echo "<td>No</td> ";
+                        }
+                        //echo "<td>" . $arrayTem["personasCargo"] . "</td> ";
+                        echo "<td>" . $arrayTem["descripcion"] . "</td> ";
+                        echo "<td>" . $arrayTem["nroAsigPerdidas"] . "</td> ";
+                        echo "<td><a href='javascript:;' onclick = 'eliminar(" . $arrayTem["codigoEstudiante"] . ")' >Eliminar</a></td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+
+            </table>
+            <div>
+                <a href="<?php echo $this->baseUrl; ?>/Index/"><H2>Regresar a Menú</H2></a>
+            </div>
+        </div>
+
+<!--La etiqueta <script> nos permite insertar codigo javaScript y ajax para el manejo de datos
+Podemos implementar nuestras funciones dentro de la etiqueta o llamar un archivo
+externo con dichas funciones-->
+
+        <script type='text/javascript'> 
+            //Enviamos la URL base a los archivos javaScript.
+            var url = '<?php echo $this->baseUrl; ?>'; 
+        </script>
+
+        <!--INICIALIZAR LIBRERIA JAVASCRIPT-->
+        <script src="<?php echo $this->baseUrl; ?>/archivos/js/jquery-1.8.3.min.js"></script>    
+
+        <!--LIBRERIAS DE VALIDACION DE FORMULARIOS-->
+        <script src="<?php echo $this->baseUrl; ?>/archivos/js/jquery.validationEngine.js" type="text/javascript"></script>
+        <script src="<?php echo $this->baseUrl; ?>/archivos/js/jquery.validationEngine-es.js" type="text/javascript"></script>
+        <!--LIBREIAS DE VALIDACION DE FORMULARIOS-->
+
+        <!--LLAMAMOS AL SCRIPT QUE GESTIONARA LA ELIMINACION DE ESTUDIANTES-->
+        <script src="<?php echo $this->baseUrl; ?>/archivos/js/eliminar.js" type="text/javascript"></script>
+
+ 
+    </body>
+
+
+
+
+
+
+
+
