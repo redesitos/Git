@@ -1,0 +1,55 @@
+
+<!--SOLO COLOCAMOS EL CONTENIDO-->
+
+<div>
+    <H1>Consultar - Actualizar Estudiante</H1>
+    <form id="frmConsultar">
+        <div>
+            <label>Código</label>            
+            <input type="text" name ="codigo" id="codigo" maxlength="11" placeholder="Digite código del Estudiante" class="validate[required,custom[onlyNumberSp,minSize[11]]] text-input" /><!--Caja de texto validada con Vadidator Engine--> 
+            <input type="button" value="Consultar" id="btnConsultar">
+            <div>
+                <span class="help-inline" id="msjCodigo"></span>
+            </div>
+        </div>
+        <div>
+            <label>Nombres</label> 
+            <input type="text" name ="nombres" id="nombres" placeholder="Digite nombres del Estudiante" class="validate[required,custom[onlyLetterSp] text-input" />
+        </div>
+        <div>
+            <label>Fecha Inscripción</label>            
+            <input type="text" id="fechaIncripcion" placeholder="DD/MM/AAAA" class="validate[required,custom[date]] text-input" /><!----> 
+        </div>
+        <div>
+            <label>Valor Matricula</label>            
+            <input type="text" id="valorMatricula" placeholder="Digite el valor de la matricula" class="validate[required,custom[onlyNumberSp]] text-input" /><!---->
+        </div>
+        <div>
+            <label>Personas a Cargo</label>
+            <select class="large m-wrap validate[required]" id="personasCargo" tabindex="1">
+                <option value=""></option>
+                <option value="1">SI</option>
+                <option value="0">NO</option>
+            </select>
+        </div>
+        <div>
+            <label>Descripción personas a Cargo</label>
+            <div>
+                <textarea  id="descripcion" rows="2" placeholder="En caso afirmativo, con quien vive?" maxlength="100"></textarea>
+            </div>
+        </div>
+        <div>
+            <label>Asignaturas Perdidas</label>            
+            <input type="text" id="asignaturasPerdidas" placeholder="Asig. perdidas" class="validate[required,custom[integer,min[0]]] text-input" />
+        </div>
+        <div>
+            <input type="button" value="Guardar Cambios" id="btnGuardar" disabled>
+        </div>
+    </form>
+    <div>
+        <a href="<?php echo $this->baseUrl; ?>/Index/"><H2>Regresar a Menú</H2></a>
+    </div>
+</div>
+
+
+
