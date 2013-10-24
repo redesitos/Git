@@ -18,7 +18,7 @@
             // binds form submission and fields to the validation engine
                 jQuery("#formID").validationEngine();
                 $(".submit").click(function(){
-                    jQuery("#formID").validationEngine('validate');
+                    jQuery("#formMenu").validationEngine('validate');
                 })
             });
             /**
@@ -28,20 +28,19 @@
             * @param {int} rule index
             * @param {Map} form options
             * @return an error string if validation failed
-            */
+            *
             function checkHELLO(field, rules, i, options){
             if (field.val() != "HELLO") {
             // this allows to use i18 for the error msgs
             return options.allrules.validate2fields.alertText;
             }
-            }
+            }*/
     </script> 
-
   </head>
-
+  
   <body>
       <section>
-     <form id="formID" method="post" action="index.php" class="validationEngineContainer">
+     <form id="formMenu" method="post" action="index.php" class="validationEngineContainer">
       
 <!--email-->          
       <label  class="label-important">Validacion de E-mail:</label>

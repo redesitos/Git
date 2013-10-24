@@ -9,6 +9,17 @@ class IndexController extends Zend_Controller_Action
         /* Initialize action controller here */
     }
 
+    
+    public function preDispatch() {
+        $options = array(
+            'layout' => 'usuario',
+        );
+        Zend_Layout::startMvc($options);
+    }
+    
+    
+    
+    
     public function indexAction()
     {
         // action body
@@ -38,16 +49,15 @@ class IndexController extends Zend_Controller_Action
        
     }
 
-    public function addAction()
+    /*public function addAction()
     {
         
         $dato="fish";
         $this->view->assign(array('dato'=>$dato));
         return $this->view;
     }
+     * funcion inicial validacion de agregacion a la base de datos
+     */
 
 
 }
-
-
-
