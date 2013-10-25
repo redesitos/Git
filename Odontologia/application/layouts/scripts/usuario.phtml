@@ -35,70 +35,27 @@
         <header>
           <?php include 'header.php';?>
           <!--<img id="banner" src="./imagenes/banner.png"/>-->
-      </header>
-    
-    <!--menus-->
-    <nav>
-        <div class="navbar navbar-default">
-            <?php echo $this->render('nav.phtml'); ?> 
+        </header>
+
+        <!--menus-->
+        <nav>
+            <div class="navbar navbar-default">
+                <?php echo $this->render('nav.phtml'); ?> 
+            </div>
+            <div id="sidebar">
+                <?php echo $this->render('sidebar.phtml'); ?> 
+            </div>
+        </nav>
+
+        <div class="page-content">
+            <div id="content">
+                 <div>
+                      <?php echo $this->layout()->content; ?><!--Enviamos los contenidos de todas las vistas-->
+                 </div>
+            </div>
         </div>
-        <div id="sidebar">
-            <?php echo $this->render('sidebar.phtml'); ?> 
-        </div>
-    </nav>
-    
-    <div class="page-content">
-        <div id="content">
-             <div>
-                  <?php echo $this->layout()->content; ?><!--Enviamos los contenidos de todas las vistas-->
-             </div>
-        </div>
-    </div>
-    <footer class="panel-footer">
-       <div>
-           <p align="center">Ejemplo udistrital <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
-       </div>
-    </footer>
-      
-
-
-<!--La etiqueta <script> nos permite insertar codigo javaScript y ajax para el manejo de datos
-Podemos implementar nuestras funciones dentro de la etiqueta o llamar un archivo
-externo con dichas funciones-->
-
-        <script>
-
-            $(document).ready(function() {  
-                //Inicializamos la libreria validadora para el formulario con id (nombre), "frmCrear"
-                $("#frmConsultar").validationEngine();
-                $("#frmCrear").validationEngine();
-            });
-        </script>
-
-        <!--
-        El siguiente Script inhabilita o habilita la casilla de 
-        descripciÃ³n segÃºn la opciÃ³n que se escoja.
-        Si este cÃ³digo lo quieren pasar a un archivo individual JavaScript, tienen que hacer
-        referencia a el usando la siguiente linea de codigo:
-        <script src="<?php echo $this->baseUrl; ?>/archivos/js/nombrearchivo.js" type="text/javascript"></script>
-        
-        <script>   
-                    
-            //$("#personasCargo") me hace referencia al select de personas a cargo,
-            //ya que tiene como id = "personasCargo"
-            $("#personasCargo").click(function(){                
-                if($("#personasCargo").val()==='0'){
-                    $("#descripcion").attr("disabled",'disabled');
-                    $("#descripcion").attr("value",'Ninguna');
-                }
-                else if($("#personasCargo").val()==='1'){
-                    $("#descripcion").removeAttr('disabled');
-                    //$("#descripcion").attr("value",'');
-                    $("#descripcion").attr("class",'validate[required]');
-                }                
-                return false;
-            });
-        </script>
--->
     </BODY>
+    <FOOTER class="panel-footer">
+         <?php echo $this->render('footer.phtml'); ?>
+    </FOOTER>
 </HTML> 

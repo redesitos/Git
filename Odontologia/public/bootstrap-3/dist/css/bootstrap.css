@@ -1913,6 +1913,13 @@ textarea.input-lg {
   border-color: #468847;
 }
 
+.form-content-box{
+    padding: 15% 30%;
+    height: 10%;
+    position: absolute;
+    width: 100%; 
+}
+
 .form-control-static {
   padding-top: 7px;
   margin-bottom: 0;
