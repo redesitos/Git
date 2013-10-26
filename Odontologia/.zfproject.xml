@@ -12,6 +12,10 @@
           <actionMethod actionName="add"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
+        <controllerFile controllerName="Citas">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="asignar"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Estudiante"/>
@@ -41,6 +45,12 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
             <viewScriptFile forActionName="add"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Citas">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Citas">
+            <viewScriptFile forActionName="asignar"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
