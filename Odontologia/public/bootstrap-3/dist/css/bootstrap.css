@@ -1923,8 +1923,6 @@ contenido del formulario, ajustado para los menus verticales izquierdo
     width: 40%;
     text-align: justify;
     margin: 2%;
-    border:2%;
-    
 }
 
 .form-control-static {
@@ -5415,15 +5413,17 @@ a.list-group-item:focus {
     color: inherit;
 }
 
+
 .panel-footer {
-    float:left;
-    background-color: silver;
-    border-top: 2px solid #dddddd;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    margin: 1.0em auto;
-    padding:0.25em;
-    width: 98%;
+	background: silver;
+	border-radius: 0.25em;
+	margin: 0.5em auto;
+	/*maximo tamaño de pantalla*/
+	max-width:90%; 
+	padding:0.25em;	
+	text-align: center;
+	font-size:16px;
+        margin-top: 40%;
 }
 
 .panel-group .panel {
