@@ -15,6 +15,8 @@
         <controllerFile controllerName="Citas">
           <actionMethod actionName="index"/>
           <actionMethod actionName="asignar"/>
+          <actionMethod actionName="cambiar"/>
+          <actionMethod actionName="eliminar"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory>
@@ -51,6 +53,12 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Citas">
             <viewScriptFile forActionName="asignar"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Citas">
+            <viewScriptFile forActionName="cambiar"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Citas">
+            <viewScriptFile forActionName="eliminar"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
