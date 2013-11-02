@@ -1,12 +1,14 @@
 <?php
-use Application_Model_Register;
 
 class IndexController extends Zend_Controller_Action
 {
-
     public function init()
     {
-        /* Initialize action controller here */
+        /* baseUrl tiene la direccion del proyecto
+         * http://localhost/odontologia/public
+         * getBaseUrl() tiene la url actual y se pasa a las vistas mediante 
+         * baseUrl */
+        $this->view->baseUrl=$this->_request->getBaseUrl();
     }
 
     
