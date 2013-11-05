@@ -16,8 +16,8 @@
     <H1>Asignar cita</H1>
     <form id="frmCrear">
         <div>
-            <label>Código</label>            
-            <input type="text" name ="codigo" id="codigo" maxlength="11" placeholder="Digite código del Estudiante"/><!--Caja de texto validada con Vadidator Engine--> 
+            <label>CÃ³digo</label>            
+            <input type="text" name ="codigo" id="codigo" maxlength="11" placeholder="Digite cÃ³digo del Estudiante"/><!--Caja de texto validada con Vadidator Engine--> 
 <!--            <input type="button" value="Existe?" id="btnConsultarEstudiante">
             <div>
                 <span class="help-inline" id="msjCodigo"></span>
@@ -28,7 +28,7 @@
             <input type="text" name ="nombres" id="nombres" placeholder="Digite nombres del Estudiante" class="validate[required,custom[onlyLetterSp] text-input" />
         </div>
         <div>
-            <label>Fecha Inscripción</label>            
+            <label>Fecha InscripciÃ³n</label>            
             <input type="text" id="fechaIncripcion" placeholder="DD/MM/AAAA" class="validate[required,custom[date]] text-input" /> 
         </div>
         <div>
@@ -44,7 +44,7 @@
             </select>
         </div>
         <div>
-            <label>Descripción personas a Cargo</label>
+            <label>DescripciÃ³n personas a Cargo</label>
             <div>
                 <textarea  id="descripcion" rows="2" placeholder="En caso afirmativo, con quien vive?" maxlength="100" disabled></textarea>
             </div>
@@ -59,6 +59,6 @@
     </form>
     <div>
         <?php echo $this->baseUrl; ?>
-        <a href="<?php echo $this->baseUrl; ?>/Index/"><H2>Regresar a Menú</H2></a>
+        <a href="<?php echo $this->baseUrl; ?>/Index/"><H2>Regresar a MenÃº</H2></a>
     </div>
 </div>
