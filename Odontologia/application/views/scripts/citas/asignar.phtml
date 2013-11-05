@@ -16,8 +16,11 @@
     <H1>Asignar cita</H1>
     <form id="frmCrear">
         <div>
-            <label>CÃ³digo</label>            
-            <input type="text" name ="codigo" id="codigo" maxlength="11" placeholder="Digite cÃ³digo del Estudiante"/><!--Caja de texto validada con Vadidator Engine--> 
+            <label>Codigo</label>            
+            <input type="text" name ="codigo" id="codigo" maxlength="11" 
+                   placeholder="Digite codigo del Estudiante"
+                   data-validation-engine="validate[required,custom[integer]]"
+                   /><!--Caja de texto validada con Vadidator Engine--> 
 <!--            <input type="button" value="Existe?" id="btnConsultarEstudiante">
             <div>
                 <span class="help-inline" id="msjCodigo"></span>
