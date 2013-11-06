@@ -1,67 +1,39 @@
-<!--
-<div class="container">
-    <section id="gridSystem">
-        <div class="bs-docs-grid">
-            <div class="row show-grid">
-                <table class="table">
-                    <div class="span3" data-original-title title>hola</div>
-                    <div class="span3" data-original-title title>mundo</div>
-                    <div class="span3" data-original-title title>tets</div>
-                </table>
-            </div>
-        </div>
-    </section>-->
 
 <div>
-    <H1>Asignar cita</H1>
+    <H1>Asignar Nueva Cita</H1>
     <form id="frmCrear">
         <div>
-            <label>Codigo</label>            
-            <input type="text" name ="codigo" id="codigo" maxlength="11" 
-                   placeholder="Digite codigo del Estudiante"
-                   data-validation-engine="validate[required,custom[integer]]"
-                   /><!--Caja de texto validada con Vadidator Engine--> 
-<!--            <input type="button" value="Existe?" id="btnConsultarEstudiante">
+            <label>Código</label>            
+            <input name="codigo" type="text" id="codigo" maxlength="11" 
+                   placeholder="Digite código del Estudiante" 
+                   data-validation-engine="validate[required,custom[onlyNumberSp,/*minSize[11]*/]]"
+                   class="text-input" /><!--Caja de texto validada con Vadidator Engine--> 
+            
+            <input type="button" value="Existe?" id="btnConsultarEstudiante">
             <div>
                 <span class="help-inline" id="msjCodigo"></span>
             </div>
         </div>
         <div>
-            <label>Nombres</label> 
-            <input type="text" name ="nombres" id="nombres" placeholder="Digite nombres del Estudiante" class="validate[required,custom[onlyLetterSp] text-input" />
+            <label>Hora</label> 
+            <input type="time" id="hora" placeholder="Hora" 
+                   data-validation-engine="validate[required]" 
+                   class="text-input" />
         </div>
         <div>
-            <label>Fecha InscripciÃ³n</label>            
-            <input type="text" id="fechaIncripcion" placeholder="DD/MM/AAAA" class="validate[required,custom[date]] text-input" /> 
+            <label>Fecha Asignada</label>            
+            <input type="text" id="fecha" placeholder="Dia/Mes/Año" 
+                   data-validation-engine="validate[required,custom[date]]"
+                   class="text-input" /><!--validacion de fecha--> 
         </div>
-        <div>
-            <label>Valor Matricula</label>            
-            <input type="text" id="valorMatricula" placeholder="Digite el valor de la matricula" class="validate[required,custom[onlyNumberSp]] text-input" />
-        </div>
-        <div>
-            <label>Personas a Cargo</label>
-            <select class="large m-wrap validate[required]" id="personasCargo" tabindex="1">
-                <option value=""></option>
-                <option value="1">SI</option>
-                <option value="0">NO</option>
-            </select>
-        </div>
-        <div>
-            <label>DescripciÃ³n personas a Cargo</label>
-            <div>
-                <textarea  id="descripcion" rows="2" placeholder="En caso afirmativo, con quien vive?" maxlength="100" disabled></textarea>
-            </div>
-        </div>
-        <div>
-            <label>Asignaturas Perdidas</label>            
-            <input type="text" id="asignaturasPerdidas" placeholder="Asig. perdidas" class="validate[required,custom[integer,min[0]]] text-input" />
-        </div>-->
         <div>
             <input type="button" value="Guardar" id="btnGuardar">
         </div>
+        <div>
+            <span class="help-block" id="msjconfirmacion"></span>
+        </div>
     </form>
     <div>
-        <?php echo $this->baseUrl; ?>
-        <a href="<?php echo $this->baseUrl; ?>/Index/"><H2>Regresar a MenÃº</H2></a>
+        <a href="<?php echo $this->baseUrl; ?>/index/"><H2>Regresar a Menú</H2></a>
     </div>
 </div>

@@ -3,41 +3,37 @@ $(document).ready(function() {
     $('#btnGuardar').click(function () {
 
         //Si el formulario esta validado, entonces...
-       // if($('#frmCrear').validationEngine('validate')){            
-            crearEstudiante();
-        //}  
+        if($('#frmCrear').validationEngine('validate')){            
+            crearEstudiante();   
+        }  
 
     });
-//    $('#btnConsultarEstudiante').click(function () {
-//        if($('#codigo').val()!= ""){            
-//            consultarExiste();
-//        } 
-//        
-//
-//    });
+    $('#btnConsultarEstudiante').click(function () {
+        if($('#codigo').val()!= ""){            
+            consultarExiste();
+        } 
+        else{
+            $("#msjCodigo").html("<label style='color:green;'>* ingrese un Código.</label>");
+        }
+        
+
+    });
     
     
 });
 
 function crearEstudiante(){
-    //alert("Creando estudiante");
+    
     //Obtenemos los datos en variables
     var codigo = $("#codigo").val();
-//    var nombres = $("#nombres").val();
-//    var fecha = $("#fechaIncripcion").val();
-//    var matricula = $("#valorMatricula").val();       
-//    var personasCargo = $("#personasCargo").val();
-//    var descripcion = $("#descripcion").val();
-//    var asignaturasPerdidas = $("#asignaturasPerdidas").val();
-//        
+    var hora = $("#hora").val();
+    var fecha = $("#fecha").val();
+
 //    //Concatenamos todos los datos en una sola variable y los separamos por el simbolo "&"
-//    var dataString = "codigo="+codigo+"&nombres="+nombres+"&fecha="+fecha+"&matricula="+matricula+"&personasCargo="+personasCargo
-//    +"&descripcion="+descripcion+"&asignaturasPerdidas="+asignaturasPerdidas;
-        
-    
-    var dataString="codigo="+codigo;
+    var dataString = "codigo="+codigo+"&hora="+hora+"&fecha="+fecha;
+
     //Enviamos valores con AJAX
-//    alert("datos: "+dataString);
+
     
     $.ajax({
         async: true,
@@ -48,22 +44,24 @@ function crearEstudiante(){
         data: dataString,
         beforeSend: function(data){
             $("#msjconfirmacion").html("<label style='color:green;'>* Enviando datos...</label>"); 
-        }//,
-//        success: function(requestData){
-//            //alert("Servidor respondio: "+requestData);
-//            if(requestData == 1){                
-//                alert("La operación se ha realizado con éxito.");     
-//                location.reload();
-//            }
-//            else if(requestData==0){
-//                alert("El Estudiante ya está registrado.");
-//                location.reload();
-//            }
-//        },
-//        error: function(requestData, strError, strTipoError){
-//            alert("Error "+strTipoError+": " + strError);
-//        },
-//        complete: function (requestData, exito){}
+        },
+        success: function(requestData){
+            //alert("Servidor respondio: "+requestData);
+            if(requestData == 1){
+                $("#msjconfirmacion").html("<label style='color:green;'>* Cita Programada...</label>");
+                alert("La operación se ha realizado con éxito.");     
+                window.location = url+"/citas/index";
+                
+            }
+            else if(requestData==0){
+                alert("El Estudiante ya reservo cita.");
+                location.reload();
+            }
+        },
+        error: function(requestData, strError, strTipoError){
+            alert("Error "+strTipoError+": " + strError);
+        },
+        complete: function (requestData, exito){}
     });   
 
 }
@@ -81,7 +79,7 @@ function consultarExiste() {
         dataType: "html",
         type: "POST",
         contentType: "application/x-www-form-urlencoded",
-        url: url+"/estudiante/crear",
+        url: url+"/citas/asignar",
         data: dataString,
         beforeSend: function(data){
             
@@ -91,7 +89,7 @@ function consultarExiste() {
             if(requestData == 1){
                 //Si el servidor respondio 1:
                 //alert("El Estudiante ya se encuantra registrado");
-                $("#msjCodigo").html("<label style='color:red;'>* El Estudiante ya se encuantra registrado.</label>");
+                $("#msjCodigo").html("<label style='color:red;'>* El Estudiante ya tiene una cita programada.</label>");
             }					
             else if(requestData == 0){
                 //Si el servidor respondio 0:

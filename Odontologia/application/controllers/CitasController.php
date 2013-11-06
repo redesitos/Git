@@ -30,13 +30,31 @@ class CitasController extends Zend_Controller_Action
             $this->_helper->viewRenderer->setNoRender(); //Deshabilita la vista para que solo los echo puedan retornar.
             $this->_helper->layout->disableLayout();//Deshabilita el Layout para que solo los echo puedan retornar.
             
-              // action body
             $asignar=new Application_Model_DbTable_ProgCita();
             $codigo = $this->_request->getPost("codigo");
-            $asignar->crear($codigo);
+           
             //Capturamos el valor del cÃ³digo de la variable "&codigo" enviado por AJAX, con el mÃ©todo _request->getPost()
+       
+            if ($this->_request->getPost("aux") == 'consultar') {// Si la peticion es de solo consultar si existe el codigo, entonces... 
+                if ($asignar->Existe($codigo)) {//Sie el estudiante existe... Entonces...
+                    echo 1; //Retorne Uno //Retorne Cero a peticion AJAX                
+                } else {// Si NO existe.. Entonces...
+//Retorne Cero a peticion AJAX 
+                    echo 0;
+                }
+            } else {//Si NO, entonces se procede a crear el estudiante
+                $hora = $this->_request->getPost("hora");
+                $fecha = $this->_request->getPost("fecha");
+                $fecha = $this->fechaMysql($fecha);
+                if ($asignar->Existe($codigo)) {//Si el estudiante existe... Entonces...
+                    echo 0; //Retorne cero                
+                } else {// Si NO existe.. Entonces...
+//Insertamos en la DB
+                    $asignar->crear($codigo, $hora, $fecha);
+                    echo 1;
+                }
+            }
         }
-        echo 0;
     }
 
     public function cambiarAction()
@@ -48,7 +66,12 @@ class CitasController extends Zend_Controller_Action
     {
         // action body
     }
-
+    
+//Función para converir fechas en formato MySQL. AAAA-MM-DD
+    public function fechaMysql($fecha) {
+        $arr = preg_split('/\/|-/', $fecha);
+        return "$arr[2]-$arr[1]-$arr[0]";
+    }
 
 }
 
