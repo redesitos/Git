@@ -19,7 +19,7 @@ $(document).ready(function() {
 
     });
     
-    $('#dp3').datepicker();
+    $('#dp4').datepicker();
     today();
 });
 
@@ -28,7 +28,7 @@ function crearEstudiante(){
     //Obtenemos los datos en variables
     var codigo = $("#codigo").val();
     var hora = $("#hora").val();
-    var fecha = $("#dp4").val();
+    var fecha = $("#dp3").val();
 
 //    //Concatenamos todos los datos en una sola variable y los separamos por el simbolo "&"
     var dataString = "codigo="+codigo+"&hora="+hora+"&fecha="+fecha;
