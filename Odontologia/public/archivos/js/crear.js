@@ -19,6 +19,7 @@ $(document).ready(function() {
 
     });
     
+    $('#dp3').datepicker();
     
 });
 
@@ -101,5 +102,6 @@ function consultarExiste() {
         },
         complete: function (requestData, exito){}
     });        
-    
+ 
 }
+
