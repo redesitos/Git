@@ -1916,11 +1916,11 @@ textarea.input-lg {
 contenido del formulario, ajustado para los menus verticales izquierdo
 */
 .form-content-box{
-    padding-top: 3%;
+    padding-left: 1%;
     float: left;
     margin-top: 7%;
     height: 45%;
-    width: 40%;
+    width: 70%;
     text-align: justify;
     margin: 2%;
 }

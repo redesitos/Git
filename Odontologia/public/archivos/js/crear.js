@@ -28,7 +28,7 @@ function crearEstudiante(){
     //Obtenemos los datos en variables
     var codigo = $("#codigo").val();
     var hora = $("#hora").val();
-    var fecha = $("#fecha").val();
+    var fecha = $("#dp4").val();
 
 //    //Concatenamos todos los datos en una sola variable y los separamos por el simbolo "&"
     var dataString = "codigo="+codigo+"&hora="+hora+"&fecha="+fecha;
