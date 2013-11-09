@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    
+    <!--icono-->
+    <link rel="shortcut icon" href="./validator/favicon.ico">
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+    <script>       
+            jQuery(document).ready(function(){
+            // binds form submission and fields to the validation engine
+                jQuery("#formID").validationEngine();
+                $(".submit").click(function(){
+                    jQuery("#formMenu").validationEngine('validate');
+                })
+            });
+            /**
+            *
+            * @param {jqObject} the field where the validation applies
+            * @param {Array[String]} validation rules for this field
+            * @param {int} rule index
+            * @param {Map} form options
+            * @return an error string if validation failed
+            *
+            function checkHELLO(field, rules, i, options){
+            if (field.val() != "HELLO") {
+            // this allows to use i18 for the error msgs
+            return options.allrules.validate2fields.alertText;
+            }
+            }*/
+    </script> 
+  </head>
+  
+  <body>
+      <section>
+     <form id="formMenu" method="post" action="index.php" class="validationEngineContainer">
+      
+<!--email-->          
+      <label  class="label-important">Validacion de E-mail:</label>
+      <input type="text" name="email" id="email" class="text-input"
+               data-validation-engine="validate[required,custom[email]]"
+               data-errormessage-value-missing="E-mail requerido" 
+               data-errormessage-custom-error="La direccion de correo debe tener: nombre@dominio.com" 
+               data-errormessage="Este campo es requerido."/> 
+<!--checkbox-->
+       <br>
+       <label class="label-primary">Validacion de checkbox</label>     
+       <input class="checkbox" data-validation-engine="validate[required]" type="checkbox" id="agree" name="agree" value="datos[]">Dato1</input>
+       <input class="checkbox" data-validation-engine="validate[required]" type="checkbox" id="agree" name="agree" value="datos[]">Dato2</input>
+       <br>
+
+<!--select-->
+       <br>
+       <label class="label-primary">Seleccion</label>     
+       <select name="sport" id="sport" data-validation-engine="validate[required]" 
+               data-errormessage="Elija una opcion" id="sport"
+               class="checkbox-inline">
+            <option value="">--Escoja un deporte--</option>
+            <option value="option1">Tenis</option>
+            <option value="option2">Micro futbol</option>
+            <option value="option3">Baloncesto</option>
+       </select>
+       <br>
+<!--texto-->       
+       <label class="label">Texto: </label>
+       <input value="" class="validate text-input" type="text" name="req" id="req"
+                       data-validation-engine="validate[required]"
+                       data-errormessage-value-missing="El texto es requerido" />
+       <br>
+<!--validar url-->
+       <label class="label-important">Enter a URL : </label>
+       <input value="http://" data-validation-engine="validate[required,custom[url]] 
+              text-input" type="text" name="url" id="url" />
+       <br>
+       
+<!--password-->
+       <label class="label-warning">Password : </label>
+       <input value="" data-validation-engine="validate[required]" 
+              data-errormessage="Ingrese una contraseña" 
+              class="text-input" type="password" name="password" id="password" />
+       <br>
+        
+<!--verificar texto en una funcion-->
+       <label class="label-danger">Validacion de texto, escriba 'HELLO' : </label>
+       <input value="" data-validation-engine="validate[required,funcCall[checkHELLO]]" 
+              class="text-input" type="text" id="lastname" name="lastname" />
+       <br>       
+        
+<!--condicional-->
+        <legend>
+        condicional
+        </legend>
+        <label>
+        <span>si este campo esta lleno: </span>
+        <input value="" class="text-input" type="text" name="dep1" id="dep1" />
+        </label><br>
+        <label>
+        <span>este campo se vuelve obligatorio: </span>
+        <input data-validation-engine="validate[condRequired[dep1]]" 
+               class="text-input" type="text" name="conditionalrequired1"
+               id="conditionalrequired1" />
+        <br>
+
+<!--minimo caracteres-->
+        <label class="label-default">
+        minimo numero de caracteres
+        </label>
+        <br/>
+        <input value="" data-validation-engine="validate[required,minSize[6]]" 
+               class="text-input" type="text" name="minsize" 
+               id="minsize" />
+        <br/>   
+        
+<!--maximo de caracteres con modo opcional no falla si esta vacio-->        
+        <label class="label-default">
+        maximo numero de caracteres, modo opcional
+        </label>
+        <br/>
+        <input value="" data-validation-engine="validate[required,maxSize[6]]" 
+               class="text-input" type="text" name="maxsize" 
+               id="maxsize" />
+        <br/>
+       
+<!--entero mayor o igual a -5-->
+	<label>
+        integer >= -5, no se adminte que este en blanco
+        </label>
+        <br>
+        <input value="-7" data-validation-engine="validate[required,custom[integer],min[-5]]"
+               class="text-input" type="text" name="min" id="min" />
+        <br>
+        
+<!--entero maximo de 50 caracteres-->        
+        
+	<label>
+        entero maximo de 50
+        </label>
+        <input value="55" data-validation-engine="validate[required,custom[integer],max[50]]" 
+               class="text-input" type="text" 
+               name="max" id="max" />
+        <br>
+        
+<!-- ya me mame copy y paste
+
+
+        <fieldset>
+        <legend>
+        Past
+        </legend>
+        <label>
+        Checks that the value is a date in the past
+        <br/>
+        <span>Please enter a date ealier than 2010/01/01</span>
+        <input value="2009/06/30" data-validation-engine="validate[custom[date],past[2010/01/01]]"
+               class="text-input" type="text" name="past" id="past" />
+        <br/>
+        </label>
+        </fieldset>
+
+        <fieldset>
+        <legend>
+        Future
+        </legend>
+        <label>
+        Checks that the value is a date in the future
+        <br/>
+        <span>Please enter a date older than today's date</span>
+        <input value="2011-01-" data-validation-engine="validate[custom[date],future[NOW]]"
+               class="text-input" type="text" name="future" id="future" />
+        <br/>
+        </fieldset>
+
+        <fieldset>
+        <legend>
+        Group required
+        </legend>
+        <label>
+        Checks if at least one of the input is not empty.
+        <br/>
+        <br/>
+        <span>Please enter a credit card</span>
+        </label>
+        <input value="" data-validation-engine="validate[groupRequired[payments]]"
+               class="text-input" type="text" name="creditcard1" id="creditcard1" />
+        <label><strong>OR</strong></label><br/>
+        <label>Please enter a paypal acccount</label>
+        <input value="" data-validation-engine=validate[groupRequired[payments],custom[email]]"
+               class="text-input" type="text" name="paypal" id="paypal" />
+        <label><strong>OR</strong></label><br/>
+        <label>Please enter a bank account</label>
+        <input value="" data-validation-engine="validate[groupRequired[payments],custom[integer]]"
+               class="text-input" type="text" name="bank" id="bank" />
+        <label><strong>OR</strong></label><br/>
+        <label>Please choose from select</label>
+        <select data-validation-engine="validate[groupRequired[payments]]"
+                class="text-input" type="text" name="bank2" id="bank2">
+        <option value="">Choose a payment option</option>
+        <option value="Paypal">Paypal</option>
+        <option value="Bank">Bank account</option>
+        </select>
+        </fieldset>
+
+        <fieldset>
+        <legend>
+        Date Range<br />
+        </legend>
+        <label>
+        Checks that the start date is before the end date.
+        Please enter an end date ealier than the start date<br /><br />
+        <label for="date1">Start Date : </label>
+        <input value="9/1/2009" data-validation-engine="validate[dateRange[grp1]]" type="text" id="date1" />
+        </label>
+        <label>
+        <label for="date2">End Date : </label>
+        <input value="3/18/1985" data-validation-engine="validate[dateRange[grp1]]" type="text" id="date2" />
+        <br/>
+        validate[dateRange[grp1]]<br />
+        Note* Both fields must have the same name
+        </label>
+        </fieldset>
+        <fieldset>
+        <label>
+        <span>Field is required with function : </span>
+        <input value="" data-validation-engine="validate[required, custom[requiredInFunction]]"
+               class="text-input" type="text" name="req3" id="req3" />
+        </label>
+        </fieldset>
+        <fieldset>
+        <legend>
+        Date Time Range<br />
+        </legend>
+        <label>
+        Checks that the start date and time are before the end date and time.
+        Please enter an end date ealier than the start date<br /><br />
+        <label for="date1">Start Date Time: </label>
+        <input value="9/1/2009 9:30:00 PM" data-validation-engine="validate[dateTimeRange[grp2]]" type="text" id="datetime1" />
+        </label>
+        <label>
+        <label for="date2">End Date Time: </label>
+        <input value="9/1/2009 2:30:00 AM" data-validation-engine="validate[dateTimeRange[grp2]]" type="text" id="datetime2" />
+        <br/>
+        validate[dateTimeRange[grp2]<br />
+        Note* Both fields must have the same name
+        </label>
+        </fieldset>
+
+        <fieldset>
+        <script>
+        /**
+        *
+        * @param {input[type=checkbox]} the checkbox to read
+        * @param {input[type=textbox]} the field bound to the checkbox that gets enabled or disabled
+        */
+        function ToggleState(checkbox, field) {
+        if ($(checkbox).attr('checked'))
+        $(field).attr('disabled', 'disabled');
+        else
+        $(field).removeAttr('disabled');
+        }
+        </script>
+        <legend>
+        Date compare<br />
+        </legend>
+
+        Checks that the first date is before the second date.
+        Please enter the second date ealier than the first date<br /><br />
+        <label>First Date :<br />
+        <input class="checkbox" type="checkbox" name="name1" id="name1" onclick="javascript:ToggleState('#name1', '#dateCmp1');" />
+        <i>Disable first date field</i><br />
+        </label>
+        <input value="2011/3/4" data-validation-engine="validate[custom[date],past[#dateCmp2]]" type="text" name="dateCmp1" id="dateCmp1" />
+        <br/>
+        validate[custom[date],past[#dateCmp2]]<br /><br />
+        <label>Second Date :<br />
+        <input class="checkbox" type="checkbox" name="name2" id="name2" onclick="javascript:ToggleState('#name2', '#dateCmp2');" />
+        <i>Disable second date field</i><br />
+        </label>
+        <input value="2010/1/2" data-validation-engine="validate[custom[date],future[#dateCmp1]]" type="text" name="dateCmp2" id="dateCmp2" />
+        <br/>
+        validate[custom[date],future[#dateCmp1]]<br />
+        </fieldset>
+
+        <fieldset>
+        <legend>
+        Credit Card
+        </legend>
+        <label>
+        Checks that the credit card number is at least theoretically valid, according the to the
+        <a href="http://en.wikipedia.org/wiki/Luhn_algorithm">Luhn checksum algorithm</a>, but not
+        whether the specific card number is active with a bank, etc.
+
+        <br/>
+        <br/>
+        Since credit cards are often presented in different formats, spaces and
+        hyphens (' ','-') are simply ignored.
+
+        <br/>
+        <br/>
+        Examples:<br/>
+        <ul>
+        <li>4111 1111 1111 1111</li>
+        <li>3737-321345-610004</li>
+        </ul>
+        <a href="http://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/credit_card_numbers.htm">More examples</a>
+        <br/>
+        <input value="" data-validation-engine="validate[required,creditCard]"
+               class="text-input" type="text" name="creditcard2" id="creditcard2" />
+        <br/>
+        validate[required,creditCard]
+        </label>
+        </fieldset>
+
+        <fieldset>
+        <legend>
+        Checkbox
+        </legend>
+        <label>
+        Check this <a href="demoCheckBox.html">[DEMO]</a>
+        </label>
+        </fieldset>
+        <fieldset>
+        <legend>
+        Ajax
+        </legend>
+        <label>
+        Check this <a href="demoAjaxSubmitPHP.html">[DEMO]</a>
+        </label>
+        </fieldset>
+
+fin copy paste-->
+
+
+
+
+<!--submit-->
+       <input type="submit" class="validate submit" id="validar" value="validar"/>
+        
+     </form>
+          </section>
+  </body>
+</html>
