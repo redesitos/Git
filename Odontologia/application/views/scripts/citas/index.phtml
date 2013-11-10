@@ -1,4 +1,16 @@
-<div class="form-content-box form-signin">
+<script src="<?php echo $this->baseUrl; ?>/bootstrap-3/dist/js/tab.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $('#home a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+    })
+</script>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="home">
+       <div class="form-content-box form-signin">
     <table style="text-align: center" class="center table table-striped" width="647" >
         <tr class="active"></tr>
         <td class="danger"> HORA </td>
@@ -38,3 +50,9 @@
         </tr>
     </table>
 </div>
+  </div>
+  <div class="tab-pane" id="profile">...</div>
+  <div class="tab-pane" id="messages">...</div>
+  <div class="tab-pane" id="settings">...</div>
+</div>
+

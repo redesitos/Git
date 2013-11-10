@@ -27,22 +27,22 @@ echo $this->baseUrl();
         <!--library-->
         <script src="<?php echo $this->baseUrl; ?>/validador/js/jquery-1.8.3.min.js" type="text/javascript"></script>
         <script src="<?php echo $this->baseUrl; ?>/bootstrap-3/dist/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
-        
+
         <script src="<?php echo $this->baseUrl; ?>/validador/js/jquery.validationEngine.js" type="text/javascript"></script>
         <script src="<?php echo $this->baseUrl; ?>/validador/js/languages/jquery.validationEngine-es.js" type="text/javascript"></script>
 
         <!--enviar la url base a los javascript-->
         <script type='text/javascript'>
-            var url='<?php echo $this->baseUrl();?>';
+            var url = '<?php echo $this->baseUrl(); ?>';
         </script> 
-        
-        <!--pasar los js personalizados-->
-        <script src="<?php echo $this->baseUrl();?>/archivos/js/crear.js" type="text/javascript"></script>
-        
-        
-         <script>
 
-            $(document).ready(function() {  
+        <!--pasar los js personalizados-->
+        <script src="<?php echo $this->baseUrl(); ?>/archivos/js/crear.js" type="text/javascript"></script>
+
+
+        <script>
+
+            $(document).ready(function() {
                 //Inicializamos la libreria validadora para el formulario con id (nombre), "frmCrear"
                 $("#frmConsultar").validationEngine();
                 $("#frmActualizar").validationEngine();
@@ -52,7 +52,7 @@ echo $this->baseUrl();
 
     </head>
 
-      <body>  
+    <body>  
         <header>
             <!--?php include 'header.php';?>-->
             <img id="banner" src="<?php echo $this->baseUrl; ?>/imagenes/banner.png"/>
@@ -63,34 +63,18 @@ echo $this->baseUrl();
             <div class="navbar navbar-default">
                 <?php echo $this->render('nav.phtml'); ?> 
             </div>
-            <div>
-            <div class="container-fluid">
-                <div class="row-fluid">
-                    <div class="span2">
-                        <!--Sidebar content-->
-                        <div id="sidebar">
-                            <?php echo $this->render('sidebar.phtml'); ?> 
-                        </div>
-                    </div>
+        </nav>
+        <section id="contenedor">
 
-                    </nav>
+            <!--Sidebar content-->
+            <article>
+                    <?php echo $this->render('sidebar.phtml'); ?> 
+            </article>
 
-                    <div class="span10">
-                        <!--Body content-->       
-                        <div class="page-content" style="text-align: center">
-                            <div id="content">
-                                <?php echo $this->layout()->content; ?><!--Enviamos los contenidos de todas las vistas-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+            <!--Body content-->       
+            <aside>
+                    <?php echo $this->layout()->content; ?>
+            </aside>
+        </section>
     </body>
-    <footer>
-        <div>
-            <?php echo $this->render('footer.phtml'); ?>
-        </div>
-    </footer>
 </html>
