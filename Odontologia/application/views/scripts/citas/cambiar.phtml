@@ -1,13 +1,21 @@
+<link rel="stylesheet" href="<?php echo $this->baseUrl; ?>/validador/fancyBox/jquery.fancybox-1.3.4.css" type="text/css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+             <script  type="text/javascript" src="http://yandex.st/jquery/fancybox/1.3.4/jquery.fancybox.min.js"></script>
+
+                     
+
+
 <div class="form-content-box form-signin">
     <table style="text-align: center" class="center table table-striped" width="647" >
         <tr class="active"></tr>
-        <td class="danger"> HORA </td>
-        <td class="danger">FECHA</td>
-        <td class="danger">NOMBRE</td>
-        <td class="danger">PROYECTO CURRICULAR</td>
-        <td class="danger">IDENTIFICACIÓN</td>
-        <td class="danger">TELÉNOFO</td>
-        <td class="danger">CAMBIAR</td>
+        <td class="danger"> <b> HORA</b> </td>
+        <td class="danger"><b>FECHA</b></td>
+        <td class="danger"><b>NOMBRE</b></td>
+        <td class="danger"><b>PROYECTO CURRICULAR</b></td> 
+        <td class="danger"><b>IDENTIFICACIÓN</b></td>
+        <td class="danger"><b>TELÉNOFO</b></td>
+        <td class="danger"><b>EDITAR</b></td>
+        <td class="danger"><b>ELIMINAR</b></td>
         <tr class="success"></tr>
         <td class="active">-----</td>
         <td class="active">-----</td>
@@ -15,7 +23,8 @@
         <td class="active">-----</td>
         <td class="active">-----</td>
         <td class="active">-----</td>
-        <td class="active"><input type="button" id="btnCambiar" class="btn btn-primary" value="Editar"></td>
+        <td class="active"><input type="button" id="btnCambiar" class="btn btn-primary btn-xs" value="Editar" onclick="abrirFancyBox();"></td>
+        <td class="active"><input type="button" id="btnCambiar" class="btn btn-danger btn-xs" value="Eliminar"></td>
         <tr class="active"></tr>
         <td class="active">-----</td>
         <td class="active">-----</td>
@@ -23,7 +32,8 @@
         <td class="active">-----</td>
         <td class="active">-----</td>
         <td class="active">-----</td>
-        <td class="active"><input type="button" id="btnCambiar" class="btn btn-primary" value="Editar"></td>
+        <td class="active"><input type="button" id="btnCambiar" class="btn btn-primary btn-xs" value="Editar" onclick="abrirFancyBox();"></td>
+        <td class="active"><input type="button" id="btnCambiar" class="btn btn-danger btn-xs" value="Eliminar"></td>
         <tr class="active"></tr>
         <td class="active">-----</td>
         <td class="active">-----</td>
@@ -31,7 +41,8 @@
         <td class="active">-----</td>
         <td class="active">-----</td>
         <td class="active">-----</td>
-        <td class="active"><input type="button" id="btnCambiar" class="btn btn-primary" value="Editar"></td>
+        <td class="active"><input type="button" id="btnCambiar" class="btn btn-primary btn-xs" value="Editar"></td>
+        <td class="active"><input type="button" id="btnCambiar" class="btn btn-danger btn-xs" value="Eliminar"></td>
         <tr class="active"></tr>
         <td class="active">-----</td>
         <td class="active">-----</td>
@@ -39,7 +50,8 @@
         <td class="active">-----</td>
         <td class="active">-----</td>
         <td class="active">-----</td>
-        <td class="active"><input type="button" id="btnCambiar" class="btn btn-primary" value="Editar"></td>
+        <td class="active"><input type="button" id="btnCambiar" class="btn btn-primary btn-xs" value="Editar"></td>
+        <td class="active"><input type="button" id="btnCambiar" class="btn btn-danger btn-xs" value="Eliminar"></td>
         <tr class="active"></tr>
         
         <td class="active">-----</td>
@@ -49,7 +61,95 @@
         
         <td class="active">-----</td>
         <td class="active">-----</td>
-        <td class="active"><input type="button" id="btnCambiar" class="btn btn-primary" value="Editar"></td>
+        <td class="active"><input type="button" id="btnCambiar" class="btn btn-primary btn-xs" value="Editar"></td>
+        <td class="active"><input type="button" id="btnCambiar" class="btn btn-danger btn-xs" value="Eliminar"></td>
         
     </table>
 </div>
+<div style="display: none;">
+    <div id="divNuevoArticulo"  class="fancyNormal" style="overflow: hidden"> 
+           
+            <table class="centrar">
+                <tbody>
+                    
+                    <tr>
+                    <td colspan="6" align="center">
+                        <span class="tituloForm">EDITAR CITAS</span>
+                        <br>
+                        <br>
+                    </td>
+                </tr>
+                    <br>
+                <tr>
+                    <td>
+                        Nombre Paciente
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="txtNombrePaciente">
+                    </td>
+                    </tr>
+                <tr>
+                    <td>
+                        Código
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="txtCodigo">
+                    </td>
+                    
+                </tr>
+                
+                <tr>
+                    <td>
+                        Proyecto Curricular
+                    </td>
+                    <td>
+                        <select class="form-control" id="txtProyectoCurricular" >
+                        <option value="-1">-- SELECCIONE --</option><option value="6">JAIRO MENDOZA</option></select>
+                    </td>
+                    
+                </tr>
+                <br>
+                <tr>
+                    <td>
+                        Teléfono
+                    </td>
+                    <td>
+                          <input type="text" class="form-control" id="txtTelefono">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fecha
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="txtFecha" >
+                    </td>
+                    </tr>
+                <tr>
+                    <td>
+                        Hora
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" id="txtHora" >
+                    </td>
+                </tr>
+                <tr><td colspan="6">
+                        <hr>
+                    </td></tr>
+                <tr>
+                    <td colspan="6" align="center">
+                        <table class="centrar">
+                            <tbody><tr>
+                                
+                                    <td align="center" colspan="6">
+                                        <input type="button" class="btn-primary btn-large" value="Guardar"> 
+                                </td>
+                            
+                            </tr>
+                            <br>
+                        </tbody></table>
+                    </td>
+                </tr>
+            </tbody></table>
+        </div>
+    </div>

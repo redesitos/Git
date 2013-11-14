@@ -66,14 +66,17 @@ class CitasController extends Zend_Controller_Action
     {
         // action body
     }
-    
-//Función para converir fechas en formato MySQL. AAAA-MM-DD
-    public function fechaMysql($fecha) {
+
+    public function fechaMysql($fecha)
+    {
         $arr = preg_split('/\/|-/', $fecha);
         return "$arr[2]-$arr[1]-$arr[0]";
     }
 
+
 }
+
+
 
 
 

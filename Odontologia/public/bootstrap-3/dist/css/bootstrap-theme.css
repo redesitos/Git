@@ -149,10 +149,10 @@
 }
 
 .navbar {
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffffff), to(#f8f8f8));
+  background-image: -webkit-gradient(linear, left 0%, left 1200px, from(#ffffff), to(#f8f8f8));
   background-image: -webkit-linear-gradient(top, #ffffff, 0%, #f8f8f8, 100%);
-  background-image: -moz-linear-gradient(top, #ffffff 0%, #f8f8f8 100%);
-  background-image: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%);
+  background-image: -moz-linear-gradient(top, #ffffff 0%, #f8f8f8 1200px);
+  background-image: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 1200px);
   background-repeat: repeat-x;
   border-radius: 4px;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff8f8f8', GradientType=0);
