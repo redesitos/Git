@@ -21,13 +21,17 @@ class CitasController extends Zend_Controller_Action {
     }
 
     public function asignarAction() {
-        if ($this->getRequest()->isXmlHttpRequest()) {//Si es una peticiÃ³n AJAX, Entonces.... 
+            if ($this->getRequest()->isXmlHttpRequest()) {//Si es una peticiÃ³n AJAX, Entonces.... 
             $this->_helper->viewRenderer->setNoRender(); //Deshabilita la vista para que solo los echo puedan retornar.
             $this->_helper->layout->disableLayout(); //Deshabilita el Layout para que solo los echo puedan retornar.
 
-            $asignar = new Application_Model_DbTable_ProgCita();
+//            $asignar = new Application_Model_DbTable_ProgCita();
             $codigo = $this->_request->getPost("codigo");
-
+            $proyecto = $this->_request->getPost("proyecto");
+            $telefono = $this->_request->getPost("telefono");       
+            $nombrePaciente = $this->_request->getPost("nombrePaciente");
+            $fecha = $this->_request->getPost("fecha");
+            $horaCita = $this->_request->getPost("horaCita");
             //Capturamos el valor del cÃ³digo de la variable "&codigo" enviado por AJAX, con el mÃ©todo _request->getPost()
 
             if ($this->_request->getPost("aux") == 'consultar') {// Si la peticion es de solo consultar si existe el codigo, entonces... 

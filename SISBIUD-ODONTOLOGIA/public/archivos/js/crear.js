@@ -19,7 +19,7 @@ $(document).ready(function() {
 
     });
     
-    $('#dp4').datepicker();
+    $('#txtFechaCita').datepicker();
     today();
 });
 
@@ -28,7 +28,7 @@ function crearEstudiante(){
     //Obtenemos los datos en variables
     var codigo = $("#codigo").val();
     var hora = $("#hora").val();
-    var fecha = $("#dp3").val();
+    var fecha = $("#txtFechaCita").val();
 
 //    //Concatenamos todos los datos en una sola variable y los separamos por el simbolo "&"
     var dataString = "codigo="+codigo+"&hora="+hora+"&fecha="+fecha;
@@ -110,7 +110,7 @@ function today(){
     var curr_date = d.getDate();
     var curr_month = d.getMonth() + 1;
     var curr_year = d.getFullYear();
-    document.getElementById("dp4").value=curr_date + "/" + curr_month + "/" + curr_year;   
+    document.getElementById("txtFechaCita").value=curr_date + "/" + curr_month + "/" + curr_year;   
 }
 
 function abrirFancyBox(){
