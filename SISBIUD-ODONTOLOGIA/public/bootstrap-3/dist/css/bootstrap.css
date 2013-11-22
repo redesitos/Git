@@ -160,7 +160,7 @@ table {
     *margin-right: .3em;
     line-height: 14px;
     vertical-align: text-top;
-    background-image: url("http://localhost/Odontologia/public/bootstrap-3/assets/img/glyphicons-halflings.png");
+    background-image: url("http://localhost/SISBIUD-ODONTOLOGIA/public/bootstrap-3/assets/img/glyphicons-halflings.png");
     background-position: 14px 14px;
     background-repeat: no-repeat;
     margin-top: 1px;
@@ -183,7 +183,7 @@ table {
 .dropdown-submenu:focus > a > [class^="icon-"],
 .dropdown-submenu:hover > a > [class*=" icon-"],
 .dropdown-submenu:focus > a > [class*=" icon-"] {
-    background-image: url("http://localhost/Odontologia/public/bootstrap-3/assets/img/glyphicons-halflings.png");
+    background-image: url("http://localhost/SISBIUD-ODONTOLOGIA/public/bootstrap-3/assets/img/glyphicons-halflings.png");
 }
 .icon-glass {
     background-position: 0      0;

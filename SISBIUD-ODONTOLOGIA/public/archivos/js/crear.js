@@ -15,8 +15,11 @@ $(document).ready(function() {
         else{
             $("#msjCodigo").html("<label style='color:green;'>* ingrese un Código.</label>");
         }
-        
-
+    });
+    
+    $('#txtHoraCita').timepicker({
+         showMeridian: false,
+        defaultTime: false
     });
     
     $('#txtFechaCita').datepicker();
@@ -26,8 +29,8 @@ $(document).ready(function() {
 function crearEstudiante(){
     
     //Obtenemos los datos en variables
-    var codigo = $("#codigo").val();
-    var hora = $("#hora").val();
+    var codigo = $("#txtCodigo").val();
+    var hora = $("#txtHoraCita").val();
     var fecha = $("#txtFechaCita").val();
 
 //    //Concatenamos todos los datos en una sola variable y los separamos por el simbolo "&"
@@ -69,7 +72,7 @@ function crearEstudiante(){
 
 function consultarExiste() {
     //Obtenemos los datos en variables
-    var codigo = $("#codigo").val();
+    var codigo = $("#txtCodigo").val();
     var aux="consultar";
     var dataString = "codigo="+codigo+"&aux="+aux;
     //alert("datos: "+dataString);
