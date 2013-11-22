@@ -33,28 +33,13 @@ class CitasController extends Zend_Controller_Action {
             $fecha = $this->_request->getPost("fecha");
             $horaCita = $this->_request->getPost("horaCita");
             //Capturamos el valor del cÃ³digo de la variable "&codigo" enviado por AJAX, con el mÃ©todo _request->getPost()
-
-            if ($this->_request->getPost("aux") == 'consultar') {// Si la peticion es de solo consultar si existe el codigo, entonces... 
-                if ($asignar->Existe($codigo)) {//Sie el estudiante existe... Entonces...
-                    echo 1; //Retorne Uno //Retorne Cero a peticion AJAX                
-                } else {// Si NO existe.. Entonces...
-//Retorne Cero a peticion AJAX 
-                    echo 0;
-                }
-            } else {//Si NO, entonces se procede a crear el estudiante
-                $hora = $this->_request->getPost("hora");
-                $fecha = $this->_request->getPost("fecha");
-                $fecha = $this->fechaMysql($fecha);
-                if ($asignar->Existe($codigo)) {//Si el estudiante existe... Entonces...
-                    echo 0; //Retorne cero                
-                } else {// Si NO existe.. Entonces...
-//Insertamos en la DB
-                    $asignar->crear($codigo, $hora, $fecha);
+            $asignar= new Application_Model_DbTable_ProgCita();
+           
+                    $asignar->crear($codigo, $horaCita, $fecha);
                     echo 1;
                 }
             }
-        }
-    }
+    
 
     public function cambiarAction() {
         // action body
