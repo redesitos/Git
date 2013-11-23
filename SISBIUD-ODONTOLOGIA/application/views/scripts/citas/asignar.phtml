@@ -18,11 +18,11 @@
             <tbody class="centrar">
             <tr>
                 <td>
-                    Código de Estudiante
+                    Código de Paciente
                 </td>
                 <td>
                     <input type="text" id="txtCodigo" maxlength="11" 
-                       placeholder="Código Estudiante" 
+                       placeholder="Código Paciente" 
                        data-validation-engine="validate[required,custom[onlyNumberSp,minSize[11]]]"
                        class="text-input form-control"/>
                 </td>
@@ -46,7 +46,10 @@
                 </td>
                 <td>
             <select class="col-md-4 form-control"
-                    id="selProyectoCurricular" style="overflow: scroll;">
+                    id="selProyectoCurricular" 
+                    style="overflow: scroll;" 
+                    data-validation-engine="validate[required]"
+                    data-errormessage="Elija una opcion">
                 <option value="">-----------------------</option>
                 <option value="1">Ingenieria de sistemas</option>
                 <option value="2">Ingenieria en electronica</option>
@@ -71,7 +74,7 @@
                 <td>
                     <input type="text" id="txtNombrePaciente" maxlength="11" 
                             placeholder="Nombre Paciente" 
-                            data-validation-engine="validate[required]"
+                            data-validation-engine="validate[required,onlyLetterSp]"
                             class="text-input form-control"/>
                 </td>
             </tr>
@@ -81,7 +84,7 @@
                 </td>
                 <td>
                     <input id="txtHoraCita" type="text" class="form-control" 
-                           placeholder="00:00" value="00:00" 
+                           placeholder="00:00" value="" 
                            data-validation-engine="validate[required]">
                 </td>
             </tr>

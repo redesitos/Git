@@ -20,7 +20,7 @@
                 </td>
                 <td>
                     <input type="text" class="form-control" id="txtPrimerApellido" 
-                           data-validation-engine="validate[required]"
+                           data-validation-engine="validate[required,onlyLetterSp]"
                            placeholder="Primer apellido">
                 </td>
 
@@ -29,7 +29,7 @@
                 </td>
                 <td>
                     <input type="text" class="form-control" id="txtSegundoApellido"
-                           data-validation-engine="validate[required]"
+                           data-validation-engine="validate[required,onlyLetterSp]"
                            placeholder="Segundo apellido">
                 </td>
 
@@ -40,7 +40,7 @@
                 </td>
                 <td colspan="2">
                     <input type="text" class="form-control" id="txtNombre"
-                           data-validation-engine="validate[required]"
+                           data-validation-engine="validate[required,onlyLetterSp]"
                            placeholder="Ingrese Nombres">
                 </td>
             </tr>
@@ -166,7 +166,7 @@
                 </td>
                 <td>
                     <input type="text" class="form-control" id="txtAfiliacion"
-                           data-validation-engine="validate[required]"
+                           data-validation-engine="validate[required,onlyLetterSp]"
                            placeholder="Tipo Eps"> 
 
                 </td>
@@ -200,7 +200,7 @@
             <tr>
                 <td>Descripción</td>
                 <td colspan="3">
-                    <textarea class="descripcion form-control"></textarea>
+                    <textarea class="descripcion form-control" placeholder="Información adicional u observaciones"></textarea>
                 </td>
             </tr>
             <tr>
