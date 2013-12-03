@@ -48,7 +48,7 @@
 
 #tabs a::after{
   content:'';
-  position:absolute;
+  position:relative;
   z-index: 1;
   top: 0;
   right: -.5em;

@@ -31,6 +31,10 @@
           <actionMethod actionName="index"/>
           <actionMethod actionName="talleres"/>
         </controllerFile>
+        <controllerFile controllerName="RegistroDiario">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="registroconsulta"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory enabled="false"/>
       <layoutsDirectory>
@@ -88,6 +92,12 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Talleres">
             <viewScriptFile forActionName="talleres"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="RegistroDiario">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="RegistroDiario">
+            <viewScriptFile forActionName="registroconsulta"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

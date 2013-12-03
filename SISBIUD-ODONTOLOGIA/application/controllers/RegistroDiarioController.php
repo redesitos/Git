@@ -1,6 +1,6 @@
 <?php
 
-class TalleresController extends Zend_Controller_Action
+class RegistroDiarioController extends Zend_Controller_Action
 {
 
     public function init()
@@ -14,7 +14,7 @@ class TalleresController extends Zend_Controller_Action
         // action body
     }
 
-    public function talleresAction()
+    public function registroconsultaAction()
     {
         // action body
     }
