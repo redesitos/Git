@@ -10,118 +10,128 @@
 
 <script src="<?php echo $this->baseUrl; ?>/archivos/js/citasOdontologicas.js" type="text/javascript"></script>
 
+<script>
+
+    $(document).ready(function() {
+        //Inicializamos la libreria validadora para el formulario con id (nombre), "frmCrear"
+        $("#frmCrear").validationEngine();
+    });
+</script>
+
+
+
 <div class="centrar tbBorde">
     <form id="frmCrear" >
         <H2 align="center" class="panel panel-primary btn-primary">Asignar Nueva Cita</H2>
         <table align="center" class="bottom">
-            
+
             <tbody class="centrar">
-            <tr>
-                <td>
-                    Código de Paciente
-                </td>
-                <td>
-                    <input type="text" id="txtCodigo" maxlength="11" 
-                       placeholder="Código Paciente" 
-                       data-validation-engine="validate[required,custom[onlyNumberSp,minSize[11]]]"
-                       class="text-input form-control"/>
-                </td>
-                <td></td>
-                <td>
-                    <input type="button" value="Existe?" id="btnConsultarEstudiante" class="btn btn-primary">
-                </td>
-            </tr>
-            
-            <tr>
-            <td>
-                
-            </td>
-                <td>
-                    <span class="help-inline" id="msjCodigo"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Proyecto Curricular
-                </td>
-                <td>
-            <select class="col-md-4 form-control"
-                    id="selProyectoCurricular" 
-                    style="overflow: scroll;" 
-                    data-validation-engine="validate[required]"
-                    data-errormessage="Elija una opcion">
-                <option value="">-----------------------</option>
-                <option value="1">Ingenieria de sistemas</option>
-                <option value="2">Ingenieria en electronica</option>
-            </select>        
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Numero de Teléfono
-                </td>
-                <td>
-                    <input type="text" id="txtNumTelefono" maxlength="7" 
-                            placeholder="Número de telefono" 
-                            data-validation-engine="validate[required,custom[onlyNumberSp,minSize[7]]]"
-                            class="text-input form-control" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Nombre del Paciente
-                </td>
-                <td>
-                    <input type="text" id="txtNombrePaciente" maxlength="11" 
-                            placeholder="Nombre Paciente" 
-                            data-validation-engine="validate[required,onlyLetterSp]"
-                            class="text-input form-control"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Hora de la Cita
-                </td>
-                <td>
-                    <input id="txtHoraCita" type="text" class="form-control" 
-                           placeholder="00:00" value="" 
-                           data-validation-engine="validate[required]">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Fecha de la Cita 
-                </td>
-                <td>
-                    <input id="txtFechaCita" size="16" type="text" placeholder="Dia/Mes/Año" 
-                        data-validation-engine="validate[required,custom[date]]"
-                        class="span2 form-control">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    
-                </td>
-                <td>
-                    <input type="button" onclick="guardaCita();" value="Guardar" id="btnGuardar" class="btn btn-primary">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    
-                </td>
-                <td>
-                    <span class="help-block col-md-4" id="msjconfirmacion"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    
-                </td>
-                <td>
-                    <a href="<?php echo $this->baseUrl; ?>/index/"><H2 align="center">Ir al inicio</H2></a>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        Código de Paciente
+                    </td>
+                    <td>
+                        <input type="text" id="txtCodigo" maxlength="11" 
+                               placeholder="Código Paciente" 
+                               data-validation-engine="validate[required,custom[onlyNumberSp,minSize[11]]]"
+                               class="text-input form-control"/>
+                    </td>
+                    <td></td>
+                    <td>
+                        <input type="button" value="Existe?" id="btnConsultarEstudiante" class="btn btn-primary">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        <span class="help-inline" id="msjCodigo"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Proyecto Curricular
+                    </td>
+                    <td>
+                        <select class="col-md-4 form-control"
+                                id="selProyectoCurricular" 
+                                style="overflow: scroll;" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Elija una opcion">
+                            <option value="">-----------------------</option>
+                            <option value="1">Ingenieria de sistemas</option>
+                            <option value="2">Ingenieria en electronica</option>
+                        </select>        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Numero de Teléfono
+                    </td>
+                    <td>
+                        <input type="text" id="txtNumTelefono" maxlength="7" 
+                               placeholder="Número de telefono" 
+                               data-validation-engine="validate[required,custom[onlyNumberSp,minSize[7]]]"
+                               class="text-input form-control" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Nombre del Paciente
+                    </td>
+                    <td>
+                        <input type="text" id="txtNombrePaciente" maxlength="11" 
+                               placeholder="Nombre Paciente" 
+                               data-validation-engine="validate[required,onlyLetterSp]"
+                               class="text-input form-control"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Hora de la Cita
+                    </td>
+                    <td>
+                        <input id="txtHoraCita" type="text" class="form-control" 
+                               placeholder="00:00" value="" 
+                               data-validation-engine="validate[required]">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fecha de la Cita 
+                    </td>
+                    <td>
+                        <input id="txtFechaCita" size="16" type="text" placeholder="Dia/Mes/Año" 
+                               data-validation-engine="validate[required,custom[date]]"
+                               class="span2 form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        <input type="button" onclick="guardaCita();" value="Guardar" id="btnGuardar" class="btn btn-primary">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        <span class="help-block col-md-4" id="msjconfirmacion"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        <a href="<?php echo $this->baseUrl; ?>/index/"><H2 align="center">Ir al inicio</H2></a>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </form>

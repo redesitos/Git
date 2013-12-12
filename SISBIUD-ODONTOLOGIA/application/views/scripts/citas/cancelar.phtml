@@ -1,14 +1,23 @@
 <!--<script src="http://code.jquery.com/jquery-1.6.3.min.js"></script>-->
 
-
-<script src="<?php echo $this->baseUrl; ?>/js/jquery-1.6.3.min.js" type="text/javascript"></script>
+<!--<script src="<?php echo $this->baseUrl; ?>/archivos/js/crear.js" type="text/javascript"></script>-->
+<script src="<?php echo $this->baseUrl; ?>/archivos/js/citasOdontologicas.js" type="text/javascript"></script>
+<!--<script src="<?php echo $this->baseUrl; ?>/js/jquery-1.6.3.min.js" type="text/javascript"></script>-->
 
 <script>
     $(document).ready(function() {
+        //Inicializamos la libreria validadora para el formulario con id (nombre), "frmCrear"
+        $("#frmInfoGeneral").validationEngine();
+        $("#frmAnamnesis").validationEngine();
+        $("#frmExaFisico").validationEngine();
+        $("#frmTraEje").validationEngine();
+//        $("#frmConPlaca").validationEngine();
+//        $("#frmDiagPron").validationEngine();
+
+        //fin de validador
         $("#content div").hide();
         $("#tabs li:first").attr("id", "current");
         $("#content div:first").fadeIn();
-
         $('#tabs a').click(function(e) {
             e.preventDefault();
             $("#content div").hide();
@@ -33,7 +42,7 @@
 
 <div id="content">
     <div id="tab1" class="fancyNormal" style="overflow: hidden">
-        <form id="frmCrear" class="tbBorde" style="text-align: left;">
+        <form id="frmInfoGeneral" class="tbBorde" style="text-align: left;">
             <table class="centrar" >
 
 
@@ -81,7 +90,7 @@
                         Documento Identidad
                     </td>
                     <td>
-                        <input type="text" class="form-control" id="txtNombre"
+                        <input type="text" class="form-control" id="txtDocId"
                                data-validation-engine="validate[required]"
                                placeholder="Documento">
                     </td>
@@ -161,7 +170,7 @@
                     <td>
                         <input type="text" class="form-control" id="txtDireccion"
                                data-validation-engine="validate[required]"
-                               placeholder="Dirección">
+                               placeholder="Dirección"/>
                     </td>
                     <td>
                         Teléfono
@@ -169,7 +178,7 @@
                     <td>
                         <input type="text" class="form-control" id="txtTelefono"
                                placeholder="Número de telefono" 
-                               data-validation-engine="validate[required,custom[onlyNumberSp,minSize[7]]]">
+                               data-validation-engine="validate[required,custom[onlyNumberSp,minSize[7]]]"/>
                     </td>
 
                 </tr>
@@ -231,7 +240,7 @@
                 <tr>
                     <td>Descripción</td>
                     <td colspan="3">
-                        <textarea class="descripcion form-control" placeholder="Información adicional u observaciones"></textarea>
+                        <textarea id="txaDescripcion"class="descripcion form-control" placeholder="Información adicional u observaciones"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -268,7 +277,7 @@
         </form>
     </div>
     <div id="tab2" class="fancyNormal" style="overflow: hidden">
-        <form class="tbBorde" style="text-align: left">
+        <form id="frmAnamnesis" class="tbBorde" style="text-align: left">
             <table class="centrar alinearIzquierda" >
                 <tr>
                     <td colspan="6" align="center">
@@ -283,8 +292,11 @@
                         Tratamiento Médico
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selTratamientoMedico" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selTratamientoMedico" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -294,8 +306,11 @@
                         Ingestión de Medicamentos
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selIngestionMedicamentos" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selIngestionMedicamentos" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -305,8 +320,11 @@
                         Reacciones Alérgicas
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selReaccionesAlergicas" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selReaccionesAlergicas" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -318,8 +336,11 @@
                         Hemorragias
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selHemorragias" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selHemorragias" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -329,8 +350,11 @@
                         Irradiaciones
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selIrradiaciones" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selIrradiaciones" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -340,8 +364,11 @@
                         Sinusitis
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selSinusitis" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selSinusitis" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -353,8 +380,11 @@
                         Enfermedades Respiratorias
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selEnfRespiratorias" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selEnfRespiratorias" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -364,8 +394,11 @@
                         Cardiopatias
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selCardiopatias" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selCardiopatias" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -375,8 +408,11 @@
                         Diabetes
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selDiabetes" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selDiabetes" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -388,8 +424,11 @@
                         Fiebre Reumática
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selFiebreReu" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selFiebreReu" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -399,8 +438,11 @@
                         Hepatitis
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selHepatitis" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selHepatitis" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -410,8 +452,11 @@
                         Hipertension Arterias
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selHipArterial" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selHipArterial" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -423,8 +468,11 @@
                         Otras Enfermedades
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selOtrasEnfermedades" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selOtrasEnfermedades" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -434,8 +482,11 @@
                         Antecedentes Familiares
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selAntFamiliares" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selAntFamiliares" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                             <option value="3">No Sabe</option>
@@ -454,7 +505,8 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <textarea class="descripcion form-control"></textarea>
+                        <textarea id="txaOtros"class="descripcion form-control"
+                                  placeholder="Otros datos adicionales"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -475,8 +527,11 @@
                         Cepillado    
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="SelCepillado" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="SelCepillado" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                         </select>
@@ -487,8 +542,11 @@
                         Seda Dental    
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selSedaDental" >
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selSedaDental" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                         </select>
@@ -499,8 +557,11 @@
                         Enjuague    
                     </td>
                     <td>
-                        <select class="selectPequenio span1" id="selEnjuague">
-                            <option value="-1">----</option>
+                        <select class="selectPequenio span1" 
+                                id="selEnjuague"
+                                data-validation-engine="validate[required]"
+                                data-errormessage="seleccione una opción">
+                            <option value="">----</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                         </select>
@@ -518,7 +579,8 @@
                 <tr>
 
                     <td colspan="3">
-                        <textarea class="descripcion form-control" id="txtObservaciones"></textarea>
+                        <textarea id="txaObservaciones"class="descripcion form-control" 
+                                  placeholder="Observaciones adicionales"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -542,14 +604,20 @@
                         Temperatura
                     </td>
                     <td>
-                        <input type="text" class="form-controlPequenio" id="txtTemperatura"> 
+                        <input type="text" class="form-controlPequenio" 
+                               id="txtTemperatura"
+                               data-validation-engine="validate[required]" 
+                               placeholder="Temperatura"> 
                     </td>
 
                     <td>
                         Pulso
                     </td>
                     <td>
-                        <input type="text" class="form-controlPequenio" id="txtPulso"> 
+                        <input type="text" class="form-controlPequenio" 
+                               id="txtPulso"
+                               data-validation-engine="validate[required]" 
+                               placeholder="Pulso"> 
                     </td>
                 </tr>
                 <tr>
@@ -557,14 +625,20 @@
                         Tension Arterial
                     </td>
                     <td>
-                        <input type="text" class="form-controlPequenio" id="txtTenArterial"> 
+                        <input type="text" class="form-controlPequenio" 
+                               id="txtTenArterial"
+                               data-validation-engine="validate[required]" 
+                               placeholder="Tension"> 
                     </td>
 
                     <td>
                         Respiracion
                     </td>
                     <td>
-                        <input type="text" class="form-controlPequenio" id="txtRespiracion"> 
+                        <input type="text" class="form-controlPequenio" 
+                               id="txtRespiracion"
+                               data-validation-engine="validate[required]" 
+                               placeholder="Respiraión"> 
                     </td>
                 </tr>
                 <tr>
@@ -596,456 +670,537 @@
                 </tr>
             </table>
         </form>
-    </div>
+    </div>    
+
     <div id="tab3" class="fancyNormal" style="overflow: hidden">
-     <form class="tbBorde" style="text-align: left">
-        <table class="centrar alinearIzquierda" >
-            <tr>
-                <td colspan="6" align="center">
-                    <H4 class="panel panel-primary btn-primary">EXAMEN FÍSICO ESTOMATOLÓGICO</H4>
-                    <br>
-                    <br>
-                </td>
-            </tr>
-            <br>
-            <tr>
-                <td colspan="2">
-                    Examen Temporo-Mandibular
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selExTemMandibular" >
-                        <option value="-1">----</option>
-                        <option value="1">Normal</option>
-                        <option value="2">Anormal</option>
-                    </select>
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-            <tr>
-                <td>
-                    <b>MUCOSA BUCAL</b>
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-            <tr>
-                <td colspan="2">
-                    Labios
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selLabios" >
-                        <option value="-1">----</option>
-                        <option value="1">Normal</option>
-                        <option value="2">Anormal</option>
-                    </select>
-                </td>
-                <td colspan="2">
-                    Lengua
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selLengua" >
-                        <option value="-1">----</option>
-                        <option value="1">Normal</option>
-                        <option value="2">Anormal</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Paladar
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selPaladar" >
-                        <option value="-1">----</option>
-                        <option value="1">Normal</option>
-                        <option value="2">Anormal</option>
-                    </select>
-                </td>
-                <td colspan="2">
-                    Piso de Boca
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selPisoBoca" >
-                        <option value="-1">----</option>
-                        <option value="1">Normal</option>
-                        <option value="2">Anormal</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Carrillo
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selCarrillo" >
-                        <option value="-1">----</option>
-                        <option value="1">Normal</option>
-                        <option value="2">Anormal</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="6">
-                    <hr>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Glándulas Salivares
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selGlanSalivares" >
-                        <option value="-1">----</option>
-                        <option value="1">Normal</option>
-                        <option value="2">Anormal</option>
-                    </select>
-                </td>
-
-                <td colspan="2">
-                    Maxilares
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selMaxilares" >
-                        <option value="-1">----</option>
-                        <option value="1">Normal</option>
-                        <option value="2">Anormal</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Senos Maxilares
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selSenMaxilares" >
-                        <option value="-1">----</option>
-                        <option value="1">Normal</option>
-                        <option value="2">Anormal</option>
-                    </select>
-                </td>
-
-
-                <td colspan="2">
-                    Músculos Masticadores
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selMusMasticadores" >
-                        <option value="-1">----</option>
-                        <option value="1">Normal</option>
-                        <option value="2">Anormal</option>
-                    </select>
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-            <tr>
-                <td>
-                    <b>Sistema: </b>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Nervioso
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selNervioso" >
-                        <option value="-1">----</option>
-                        <option value="1">Normal</option>
-                        <option value="2">Anormal</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Vascular
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selVascular" >
-                        <option value="-1">----</option>
-                        <option value="1">Normal</option>
-                        <option value="2">Anormal</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Linfático Regional
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selLinfatico" >
-                        <option value="-1">----</option>
-                        <option value="1">Normal</option>
-                        <option value="2">Anormal</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="6">
-                    <hr>
-                </td>
-            </tr>
-            <tr><td><b>Examen Dental</b></td></tr>
-            
-           <tr>
-                <td colspan="2">
-                    Supernumerarios
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selNumerarios" >
-                        <option value="-1">----</option>
-                        <option value="1">Si</option>
-                        <option value="2">No</option>
-                    </select>
-                </td>
-            
-                <td colspan="2">
-                   Abrasión 
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selAbrasion" >
-                        <option value="-1">----</option>
-                        <option value="1">Si</option>
-                        <option value="2">No</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Manchas
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selManchas" >
-                        <option value="-1">----</option>
-                        <option value="1">Si</option>
-                        <option value="2">No</option>
-                    </select>
-                </td>
-       
-                <td colspan="2">
-                    Patología Pulpar
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selPatologiaPulpar" >
-                        <option value="-1">----</option>
-                        <option value="1">Si</option>
-                        <option value="2">No</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Placa Blanda
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selPlacaBlanda" >
-                        <option value="-1">----</option>
-                        <option value="1">Si</option>
-                        <option value="2">No</option>
-                    </select>
-                </td>
-           
-                <td colspan="2">
-                    Placa Calsificada
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selPlaCalsificada" >
-                        <option value="-1">----</option>
-                        <option value="1">Si</option>
-                        <option value="2">No</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Oclusión
-                </td>
-                <td>
-                    <select class="selectPequenio span1" id="selOclusion" >
-                        <option value="-1">----</option>
-                        <option value="1">Si</option>
-                        <option value="2">No</option>
-                    </select>
-                </td>
-            </tr>
-            <tr><td><br></td></tr>
-            <tr>
-                <td>
-                    Otros (Cúal?)
-                </td>
-            </tr>
-            <tr>
-                    <td colspan="3">
-                        <textarea class="descripcion form-control" id="areaOtrosFisico"></textarea>
-                </td>
-                
-            </tr>
-            <tr><td><br></td></tr>
-            <tr>
-                <td>
-                    Observaciones
-                </td>
-            </tr>
-            <tr>
-                    <td colspan="3">
-                    <textarea class="descripcion form-control" id="areaObsFisico"></textarea>
-                </td>
-                
-            </tr>
-            <tr>
-                <td colspan="6">
-                    <hr>
-                </td>
-            </tr>
-
-            <tr>
-                <td colspan="6" align="center">
-                    <table class="centrar">
-                        <tbody><tr>
-
-                                <td align="center" colspan="6">
-                                    <input type="button" class="btn-primary btn-large" value="Guardar"> 
-                                </td>
-
-                            </tr>
+        <form id="frmExaFisico" class="tbBorde" style="text-align: left">
+            <table class="centrar alinearIzquierda" >
+                <tr>
+                    <td colspan="6" align="center">
+                        <H4 class="panel panel-primary btn-primary">EXAMEN FÍSICO ESTOMATOLÓGICO</H4>
                         <br>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <br>    
-                </td>
-            </tr>
-        </table>
-    </form>   
+                        <br>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td colspan="2">
+                        Examen Temporo-Mandibular
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selExTemMandibular" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Normal</option>
+                            <option value="2">Anormal</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td><br></td></tr>
+                <tr>
+                    <td>
+                        <b>MUCOSA BUCAL</b>
+                    </td>
+                </tr>
+                <tr><td><br></td></tr>
+                <tr>
+                    <td colspan="2">
+                        Labios
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selLabios" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Normal</option>
+                            <option value="2">Anormal</option>
+                        </select>
+                    </td>
+                    <td colspan="2">
+                        Lengua
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selLengua" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Normal</option>
+                            <option value="2">Anormal</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Paladar
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selPaladar" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Normal</option>
+                            <option value="2">Anormal</option>
+                        </select>
+                    </td>
+                    <td colspan="2">
+                        Piso de Boca
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selPisoBoca" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Normal</option>
+                            <option value="2">Anormal</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Carrillo
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selCarrillo" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Normal</option>
+                            <option value="2">Anormal</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Glándulas Salivares
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selGlanSalivares" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Normal</option>
+                            <option value="2">Anormal</option>
+                        </select>
+                    </td>
+
+                    <td colspan="2">
+                        Maxilares
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selMaxilares" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Normal</option>
+                            <option value="2">Anormal</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Senos Maxilares
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selSenMaxilares" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Normal</option>
+                            <option value="2">Anormal</option>
+                        </select>
+                    </td>
+
+
+                    <td colspan="2">
+                        Músculos Masticadores
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selMusMasticadores" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Normal</option>
+                            <option value="2">Anormal</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td><br></td></tr>
+                <tr>
+                    <td>
+                        <b>Sistema: </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Nervioso
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selNervioso" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Normal</option>
+                            <option value="2">Anormal</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Vascular
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selVascular" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Normal</option>
+                            <option value="2">Anormal</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Linfático Regional
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selLinfatico" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Normal</option>
+                            <option value="2">Anormal</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <hr>
+                    </td>
+                </tr>
+                <tr><td><b>Examen Dental</b></td></tr>
+
+                <tr>
+                    <td colspan="2">
+                        Supernumerarios
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selNumerarios" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
+                        </select>
+                    </td>
+
+                    <td colspan="2">
+                        Abrasión 
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selAbrasion" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Manchas
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selManchas" data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
+                        </select>
+                    </td>
+
+                    <td colspan="2">
+                        Patología Pulpar
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selPatologiaPulpar" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Placa Blanda
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selPlacaBlanda" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
+                        </select>
+                    </td>
+
+                    <td colspan="2">
+                        Placa Calsificada
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selPlaCalsificada" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Oclusión
+                    </td>
+                    <td>
+                        <select class="selectPequenio span1" 
+                                id="selOclusion" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">----</option>
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td><br></td></tr>
+                <tr>
+                    <td>
+                        Otros (Cúal?)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <textarea class="descripcion form-control" 
+                                  id="txaOtrosFisico">
+
+                        </textarea>
+                    </td>
+
+                </tr>
+                <tr><td><br></td></tr>
+                <tr>
+                    <td>
+                        Observaciones
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <textarea class="descripcion form-control" 
+                                  id="txaObsFisico">
+
+                        </textarea>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <hr>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="6" align="center">
+                        <table class="centrar">
+                            <tbody><tr>
+
+                                    <td align="center" colspan="6">
+                                        <input type="button" class="btn-primary btn-large" value="Guardar"> 
+                                    </td>
+
+                                </tr>
+                            <br>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br>    
+                    </td>
+                </tr>
+            </table>
+        </form>   
     </div>
-    
+
     <div id="tab4">....</div>
     <div id="tab5">....</div>
     <div id="tab6">....</div>
     <div id="tab7" class="fancyNormal" style="text-align: left">
-      <form class="tbBorde" style="text-align: left">
-    <table class="centrar alinearIzquierda" >
+        <form id="frmTraEje" class="tbBorde" style="text-align: left">
+            <table class="centrar alinearIzquierda" >
 
 
-        <tr>
-            <td colspan="6" align="center">
-                <H4 class="panel panel-primary btn-primary">TRATAMIENTO EJECUTADO</H4>
+                <tr>
+                    <td colspan="6" align="center">
+                        <H4 class="panel panel-primary btn-primary">TRATAMIENTO EJECUTADO</H4>
+                        <br>
+                        <br>
+                    </td>
+                </tr>
                 <br>
-                <br>
-            </td>
-        </tr>
-        <br>
-        <tr>
-            <td>
-                Plan de Tratamiento
-            </td>
-            <td>
-                <select class="form-control" id="selPlanTratamiento" >
-                <option value="-1">-- SELECCIONE --</option>
-                <option value="1">Opeartoria</option>
-                <option value="1">Periodoncia</option>
-                <option value="1">Ortodoncia</option>
-                <option value="1">Medicina Oral</option>
-                <option value="1">Cirugía Horal</option>
-                <option value="1">Endodoncia</option>
-                <option value="1">Prótesis</option>
-            </td>
-        </tr>
-        <tr>
-                <td colspan="6">
-                    <hr>
-                </td>
-            </tr>
-        <tr>
-            <td>
-                Fecha
-            </td>
-            <td>
-                <input type="text" class="form-control" id="txtFecha">
-            </td>
-            <td>
-                Hora
-            </td>
-            <td>
-                <input type="text" class="form-controlPequenio" id="txtHora"> 
-            </td>
-        </tr>
-        <tr>
-            <td>
-        Diente        
-            </td>
-            <td>
-             <input type="text" class="form-controlPequenio" id="txtDiente">    
-            </td>
-            <td>
-        Superficie        
-            </td>
-            <td>
-             <input type="text" class="form-controlPequenio" id="txtDiente">    
-            </td>
-        </tr>
-        <tr><td><br></td></tr><tr>
-        <tr><td><b>Actividad</b></td></tr>
-        <tr>
-            
-            <td colspan="3">
-                
-                <textarea class="descripcion form-control"id=txtAreaActividad""></textarea>
-                
-            </td></tr>
-         <tr>
-                <td colspan="6">
-                    <hr>
-                </td>
-            </tr>
-        
-            <tr>
-                <td>
-                    Firma Paciente
-                </td>
-                
-            </tr>
-            <tr><td>
-                    <textarea  id="txtAreaActividad" class="form-controlPequenio"></textarea>
-                </td></tr>
-            <tr>
-                <td>
-                    Firma Paciente
-                </td>
-                
-            </tr>
-            <tr><td>
-                    <textarea  id="txtAreaActividad" class="form-controlPequenio"></textarea>
-                </td></tr>
-             <tr>
-                <td colspan="6">
-                    <hr>
-                </td>
-            </tr>
-        <tr>
-            
-        <tr>
-            <td colspan="6" align="center">
-                <table class="centrar">
-                    <tbody><tr>
+                <tr>
+                    <td>
+                        Plan de Tratamiento
+                    </td>
+                    <td>
+                        <select class="form-control" 
+                                id="selPlanTratamiento" 
+                                data-validation-engine="validate[required]"
+                                data-errormessage="Seleccione una opción">
+                            <option value="">-- SELECCIONE --</option>
+                            <option value="1">Opeartoria</option>
+                            <option value="1">Periodoncia</option>
+                            <option value="1">Ortodoncia</option>
+                            <option value="1">Medicina Oral</option>
+                            <option value="1">Cirugía Horal</option>
+                            <option value="1">Endodoncia</option>
+                            <option value="1">Prótesis</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fecha
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" 
+                               id="txtFecha" placeholder="Dia/Mes/Año" 
+                               data-validation-engine="validate[required,custom[date]]">
+                    </td>
+                    <td>
+                        Hora
+                    </td>
+                    <td>
+                        <input type="text" class="form-controlPequenio" 
+                               id="txtHora"
+                               placeholder="00:00" value="" 
+                               data-validation-engine="validate[required]"> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Diente        
+                    </td>
+                    <td>
+                        <input type="text" class="form-controlPequenio" 
+                               id="txtDiente"
+                               data-validation-engine="validate[required]"
+                               placeholder="Numero">    
+                    </td>
+                    <td>
+                        Superficie        
+                    </td>
+                    <td>
+                        <input type="text" class="form-controlPequenio" 
+                               id="txtSupDiente"
+                               placeholder="Súperficie"
+                               data-validation-engine="validate[required]">    
+                    </td>
+                </tr>
+                <tr><td><br></td></tr><tr>
+                <tr><td><b>Actividad</b></td></tr>
+                <tr>
 
-                            <td align="center" colspan="6">
-                                <input type="button" class="btn-primary btn-large" value="Guardar"> 
-                            </td>
+                    <td colspan="3">
 
-                        </tr>
-                    <br>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <br>    
-            </td>
-        </tr>
-        </table>
-    </form>  
+                        <textarea class="descripcion form-control" 
+                                  id="txaActividad"  
+                                  data-validation-engine="validate[required]" 
+                                  placeholder="Proceso realizado">
+                        </textarea>
+
+                    </td></tr>
+                <tr>
+                    <td colspan="6">
+                        <hr>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Firma Paciente
+                    </td>
+
+                </tr>
+                <tr><td>
+                        <textarea  id="txaFirmaPaciente" 
+                                   class="form-controlPequenio"
+                                   placeholder="Firma del Paciente"
+                                   data-validation-engine="validate[required]">
+                        </textarea>
+                    </td></tr>
+                
+                <tr>
+                    <td colspan="6">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+
+                <tr>
+                    <td colspan="6" align="center">
+                        <table class="centrar">
+                            <tbody><tr>
+
+                                    <td align="center" colspan="6">
+                                        <input type="button" class="btn-primary btn-large" value="Guardar"> 
+                                    </td>
+
+                                </tr>
+                            <br>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br>    
+                    </td>
+                </tr>
+            </table>
+        </form>  
     </div>
     <div id="tab8">....</div>
 </div>

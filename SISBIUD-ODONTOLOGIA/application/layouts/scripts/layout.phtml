@@ -40,7 +40,7 @@ echo $this->baseUrl();
 
 
 
-        <script>
+<!--       <script>
 
             $(document).ready(function() {
                 //Inicializamos la libreria validadora para el formulario con id (nombre), "frmCrear"
@@ -48,7 +48,7 @@ echo $this->baseUrl();
                 $("#frmActualizar").validationEngine();
                 $("#frmCrear").validationEngine();
             });
-        </script>
+        </script>-->
 
     </head>
 
@@ -68,12 +68,12 @@ echo $this->baseUrl();
 
             <!--Sidebar content-->
             <article>
-                    <?php echo $this->render('sidebar.phtml'); ?> 
+                <?php echo $this->render('sidebar.phtml'); ?> 
             </article>
 
             <!--Body content-->       
             <aside>
-                    <?php echo $this->layout()->content; ?>
+                <?php echo $this->layout()->content; ?>
             </aside>
         </section>
     </body>
