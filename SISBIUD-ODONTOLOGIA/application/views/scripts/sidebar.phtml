@@ -1,61 +1,83 @@
-<!--barra de menus de la parte vertical-->
-<div id="sidebar" role="navigation" class="list-group" style="text-align: center">
-<div class="list-group" style="text-align: center">
-    <a href="#" class="list-group-item active">
-        Menu Principal
-    </a>
-    <a href="<?php echo $this->baseUrl; ?>/citas/asignar" class="list-group-item nav-stacked">Asignar Citas</a>
-    <a href="<?php echo $this->baseUrl; ?>/citas/consultar" class="list-group-item nav-stacked">Consultar Citas</a>
-    <a href="<?php echo $this->baseUrl; ?>/citas/cambiar" class="list-group-item nav-stacked">Cambiar Citas</a>
-    <a href="<?php echo $this->baseUrl; ?>/citas/cancelar" class="list-group-item nav-stacked">Eliminar Citas</a>
-</div>
-</div>
+<!--barra de menus de la parte vertical area izquierda-->
 
-<div id="sidebar" role="navigation" class="list-group">
-    <div class="list-group" style="text-align: left">
-        <a href="#" class="list-group-item active" style="text-align: center">
-        Historia Clínica
-    </a>
-    <a href="<?php echo $this->baseUrl; ?>/historias-clinicas/crear" class="list-group-item nav-stacked">Información General</a>
-    <a href="<?php echo $this->baseUrl; ?>/anemesis/anemesis" class="list-group-item nav-stacked">Anémesis</a>
-    <a href="<?php echo $this->baseUrl; ?>/examenfisico/examen-fisico" class="list-group-item nav-stacked">Examen físico Estomatológico</a>
-    <a href="<?php echo $this->baseUrl; ?>/historia-clinica/tratamientoejecutado" class="list-group-item nav-stacked">Evaluación del Estado Periodontal</a>
-    <a href="<?php echo $this->baseUrl; ?>/citas/eliminar" class="list-group-item nav-stacked">Control Placa</a>
-    <a href="<?php echo $this->baseUrl; ?>/citas/eliminar" class="list-group-item nav-stacked">Odontográma</a>
-    <a href="<?php echo $this->baseUrl; ?>/citas/eliminar" class="list-group-item nav-stacked">Diagnóstico y Pronóstico</a>
-    <a href="<?php echo $this->baseUrl; ?>/historia-clinica/tratamientoejecutado" class="list-group-item nav-stacked">Tratamiento Ejecutado</a>
-    <a href="<?php echo $this->baseUrl; ?>/citas/eliminar" class="list-group-item nav-stacked">Odontográma Final</a>
-</div>
-</div>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<style type='text/css'>
+    div.subitem a.list-group-item {
+        padding-left: 30px;
+    }
+</style>
+
+<script type="text/javascript">
+    $(window).load(function() {
+        $('#sidebar > a').on('mouseover', function(e) {
+            e.preventDefault();
+
+            if (!$(this).hasClass("active")) {
+                var lastActive = $(this).closest("#sidebar").children(".active");
+                lastActive.removeClass("active");
+                lastActive.next('div').collapse('hide');
+                $(this).addClass("active");
+                $(this).next('div').collapse('show');
+
+            }
+
+        });
+    });
+</script>
 
 
-<div id="sidebar" role="navigation" class="list-group">
-    <div class="list-group" style="text-align: left">
-        <a href="#" class="list-group-item active" style="text-align: center">
-        Historia Clínica
-    </a>
-    <a href="<?php echo $this->baseUrl; ?>/hclinica-urgencia/historia-urgencias" class="list-group-item nav-stacked">Datos Básicos</a>
-    <a href="<?php echo $this->baseUrl; ?>/hclinica-urgencia/anemesis-urgencia" class="list-group-item nav-stacked">Anémesis Historia Clínica Urgencias</a>
-</div>
-</div>
+<div class="panel panel-default">
+    <div id="sidebar" role="navigation" class="list-group" style="text-align: center;">
 
-<div id="sidebar" role="navigation" class="list-group">
-    <div class="list-group" style="text-align: left">
-        <a href="#" class="list-group-item active" style="text-align: center">
-        Registro diario Consulta
-    </a>
-    <a href="<?php echo $this->baseUrl; ?>/registro-diario/registroconsulta" class="list-group-item nav-stacked">Registro Diario</a>
-    
-</div>
-</div>
+        <a Style="background-color:#64A0F0" href="<?php echo $this->baseUrl(); ?>/index" class="list-group-item active">
+            Inicio
+        </a>
 
 
-<div id="sidebar" role="navigation" class="list-group">
-    <div class="list-group" style="text-align: left">
-        <a href="#" class="list-group-item active" style="text-align: center">
-        Talleres Odontológicos
-    </a>
-    <a href="<?php echo $this->baseUrl; ?>/talleres/talleres" class="list-group-item nav-stacked">Talleres</a>
-    
-</div>
+        <a Style="background-color:#64A0F0" href="#" class="list-group-item" style="text-align: center" data-parent="#sidebar">
+            Citas Odontólogicas
+        </a>
+        <div id="citas" class="list-group subitem collapse">
+            <a href="<?php echo $this->baseUrl(); ?>/citas/asignar" class="list-group-item">Asignar</a>
+            <a href="<?php echo $this->baseUrl(); ?>/citas/consultar" class="list-group-item">Consultar</a>
+            <a href="<?php echo $this->baseUrl(); ?>/citas/cancelar" class="list-group-item">Cancelar</a>
+            <a href="<?php echo $this->baseUrl(); ?>/citas/cambiar" class="list-group-item">Cambiar</a>
+        </div>
+
+        <a Style="background-color:#64A0F0" href="#" class="list-group-item" style="text-align: center ">
+            Historias Clinicas
+        </a>
+
+        <div id="historiaClinica" class="list-group subitem collapse">
+            <a href="<?php echo $this->baseUrl(); ?>/historias-clinicas/crear" class="list-group-item">Crear</a>
+            <a href="<?php echo $this->baseUrl(); ?>/historias-clinicas/crear" class="list-group-item">Consultar</a>
+            <a href="<?php echo $this->baseUrl(); ?>/historias-clinicas/crear" class="list-group-item">Seguimiento</a>
+        </div>
+
+        <a Style="background-color:#64A0F0" href="<?php echo $this->baseUrl(); ?>/Cita/calendario" class="list-group-item" style="text-align: center " data-parent="#sidebar">
+            Consulta
+        </a>
+        <div id="citas" class="list-group subitem collapse">    
+            <a  href="<?php echo $this->baseUrl(); ?>/Cita/calendario" class="list-group-item">Ver Calendario</a>
+            <a  href="<?php echo $this->baseUrl(); ?>/Cita/asignarcita" class="list-group-item">Asignar Cita</a>
+            <a  href="<?php echo $this->baseUrl(); ?>/Cita/calendariodia" class="list-group-item">Ver Citas del Dia</a>
+        </div>
+
+
+
+        <a Style="background-color:#64A0F0" href="<?php echo $this->baseUrl(); ?>/Consulta/mcyea" class="list-group-item" style="text-align: center">
+            Reportes
+        </a>
+
+
+
+        <div id="reportes" class="list-group subitem collapse"> 
+            <a href="#" class="list-group-item">Consultas del Mes</a>
+            <a href="#" class="list-group-item">Estadisticas</a>
+            <a href="#" class="list-group-item">Generar Reportes</a>
+        </div>
+
+
+    </div>
 </div>

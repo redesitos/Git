@@ -2,7 +2,7 @@
 <section>
     <link href='<?php echo $this->baseUrl; ?>/calendario/fullcalendar/fullcalendar.css' rel='stylesheet' />
     <link href='<?php echo $this->baseUrl; ?>/calendario/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
-    <script src='<?php echo $this->baseUrl; ?>/calendario/lib/jquery.min.js'></script>
+<!--    <script src='<?php echo $this->baseUrl; ?>/calendario/lib/jquery.min.js'></script>-->
     <script src='<?php echo $this->baseUrl; ?>/calendario/lib/jquery-ui.custom.min.js'></script>
     <script src='<?php echo $this->baseUrl; ?>/calendario/fullcalendar/fullcalendar.min.js'></script>
     <script>
@@ -23,11 +23,15 @@
                 selectable: true,
                 selectHelper: true,
                 select: function(start, end, allDay) {
-                    var title = prompt('Event Title:');
-                    if (title) {
+                    var codigo = prompt('Codigo:');
+                    var proyectocurr = prompt('Proyecto Curricular:');
+                    var numerotel = prompt('Numero de Teléfono:');
+                    var nombre = prompt('Nombre Y Apellido:');
+                    
+                    if (codigo,proyectocurr,numerotel,nombre) {
                         calendar.fullCalendar('renderEvent',
                                 {
-                                    title: title,
+                                    title: codigo+" - "+proyectocurr,
                                     start: start,
                                     end: end,
                                     allDay: allDay
@@ -62,7 +66,8 @@
                     },
                     {
                         title: 'Jonathan Lopez',
-                        start: new Date(y, m, d, 10, 30),
+                        start: new Date(y, m, d, 10, 00),
+                        end: new Date(y, m, d, 12, 00),
                         allDay: false
                     },
                     {

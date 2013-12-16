@@ -1,7 +1,12 @@
 <!--<script src="http://code.jquery.com/jquery-1.6.3.min.js"></script>-->
+<?php
+session_start();
+if (!isset($_SESSION["sesion"])) {
+    $_SESSION["sesion"] = 1;
+}
+?>
 
-<!--<script src="<?php echo $this->baseUrl; ?>/archivos/js/crear.js" type="text/javascript"></script>-->
-<script src="<?php echo $this->baseUrl; ?>/archivos/js/citasOdontologicas.js" type="text/javascript"></script>
+<script src="<?php echo $this->baseUrl; ?>/archivos/js/CrearHistoriaClinica.js" type="text/javascript"></script>
 <!--<script src="<?php echo $this->baseUrl; ?>/js/jquery-1.6.3.min.js" type="text/javascript"></script>-->
 
 <script>
@@ -25,7 +30,7 @@
             $(this).parent().attr("id", "current");
             $('#' + $(this).attr('title')).fadeIn();
         });
-    })();
+    });
 </script>
 
 
@@ -42,10 +47,8 @@
 
 <div id="content">
     <div id="tab1" class="fancyNormal" style="overflow: hidden">
-        <form id="frmInfoGeneral" class="tbBorde" style="text-align: left;">
+        <form id="frmInfoGeneral" class="tbBorde" style="text-align: left;" method="post">
             <table class="centrar" >
-
-
                 <tr>
                     <td colspan="6" align="center">
                         <H4 class="panel panel-primary btn-primary">INFORMACIÓN GENERAL</H4>
@@ -259,9 +262,14 @@
                             <tbody><tr>
 
                                     <td align="center" colspan="6">
-                                        <input type="button" class="btn-primary btn-large" value="Guardar"> 
+                                        <input type="button" class="btn-primary btn-large" value="Validar y Continuar" onclick="InformacionGeneral();"> 
                                     </td>
 
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="help-block col-md-4" id="msjconfirmacion"></span>
+                                    </td>
                                 </tr>
                             <br>
                             </tbody>
@@ -277,7 +285,7 @@
         </form>
     </div>
     <div id="tab2" class="fancyNormal" style="overflow: hidden">
-        <form id="frmAnamnesis" class="tbBorde" style="text-align: left">
+        <form id="frmAnamnesis" class="tbBorde" style="text-align: left" method="post">
             <table class="centrar alinearIzquierda" >
                 <tr>
                     <td colspan="6" align="center">
@@ -516,7 +524,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <b>Hábitos de Igiene Oral</b>
+                        <b>Hábitos de Higiene Oral</b>
                     </td>
                 </tr>
                 <tr><td>
@@ -673,7 +681,7 @@
     </div>    
 
     <div id="tab3" class="fancyNormal" style="overflow: hidden">
-        <form id="frmExaFisico" class="tbBorde" style="text-align: left">
+        <form id="frmExaFisico" class="tbBorde" style="text-align: left" method="post">
             <table class="centrar alinearIzquierda" >
                 <tr>
                     <td colspan="6" align="center">
@@ -1063,7 +1071,7 @@
     <div id="tab5">....</div>
     <div id="tab6">....</div>
     <div id="tab7" class="fancyNormal" style="text-align: left">
-        <form id="frmTraEje" class="tbBorde" style="text-align: left">
+        <form id="frmTraEje" class="tbBorde" style="text-align: left" method="post">
             <table class="centrar alinearIzquierda" >
 
 
@@ -1171,7 +1179,7 @@
                                    data-validation-engine="validate[required]">
                         </textarea>
                     </td></tr>
-                
+
                 <tr>
                     <td colspan="6">
                         <hr>
