@@ -1,8 +1,11 @@
-<h3>Agendamiento de Citas Medicas</h3>
 <section>
+    <!--fancyBox-->
+<!--    <link href='<?php echo $this->baseUrl; ?>/validador/fancyBox/jquery.fancyBox-1.3.4.css' rel='stylesheet' />
+    <script src='<?php echo $this->baseUrl; ?>/validador/fancyBox/jquery.fancybox-1.3.4.pack.js'></script>-->
+    <!--librerias normales-->
     <link href='<?php echo $this->baseUrl; ?>/calendario/fullcalendar/fullcalendar.css' rel='stylesheet' />
     <link href='<?php echo $this->baseUrl; ?>/calendario/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
-<!--    <script src='<?php echo $this->baseUrl; ?>/calendario/lib/jquery.min.js'></script>-->
+    <script src='<?php echo $this->baseUrl; ?>/calendario/fullcalendar/gcal.js'></script>
     <script src='<?php echo $this->baseUrl; ?>/calendario/lib/jquery-ui.custom.min.js'></script>
     <script src='<?php echo $this->baseUrl; ?>/calendario/fullcalendar/fullcalendar.min.js'></script>
     <script>
@@ -13,13 +16,42 @@
             var d = date.getDate();
             var m = date.getMonth();
             var y = date.getFullYear();
-
             var calendar = $('#calendar').fullCalendar({
+                /*dayClick: function(date, allDay, jsEvent, view) {
+                    var today = new Date();
+                    if (today.getHours() != 0 && today.getMinutes() != 0 &&
+                            today.getSeconds() != 0 && today.getMilliseconds() != 0) {
+                        today.setHours(0, 0, 0, 0);
+                    }
+                    if (date < today) {
+                        alert("Past Date");
+                    }
+                }
+                , */hiddenDays: [0, 6],
+                allDay: false,
+                firstDay: 1,
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miercoles',
+                    'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                buttonText:
+                        {
+                            prev: ' ◄ ',
+                            next: ' ► ',
+                            prevYear: ' &lt;&lt; ',
+                            nextYear: ' &gt;&gt; ',
+                            today: 'hoy',
+                            month: 'mes',
+                            week: 'semana',
+                            day: 'día'
+                        },
                 header: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
+                    right: 'agendaDay,agendaWeek,month'
                 },
+                defaultView: 'agendaDay',
                 selectable: true,
                 selectHelper: true,
                 select: function(start, end, allDay) {
@@ -27,89 +59,52 @@
                     var proyectocurr = prompt('Proyecto Curricular:');
                     var numerotel = prompt('Numero de Teléfono:');
                     var nombre = prompt('Nombre Y Apellido:');
-                    
-                    if (codigo,proyectocurr,numerotel,nombre) {
+                    if (codigo, proyectocurr, numerotel, nombre) {
                         calendar.fullCalendar('renderEvent',
                                 {
-                                    title: codigo+" - "+proyectocurr,
+                                    title: codigo + " - " + proyectocurr,
                                     start: start,
                                     end: end,
                                     allDay: allDay
                                 },
-                        true // make the event "stick"
+                        true // make the event "stick",
+
                                 );
                     }
                     calendar.fullCalendar('unselect');
+
                 },
                 editable: true,
-                events: [
-                    {
-                        title: 'Control permanente',
-                        start: new Date(y, m, 1)
-                    },
-                    {
-                        title: 'Juan Lozano',
-                        start: new Date(y, m, d - 5),
-                        end: new Date(y, m, d - 2)
-                    },
-                    {
+                events: [{
                         id: 999,
-                        title: 'Sandra Muñoz',
-                        start: new Date(y, m, d - 3, 16, 0),
-                        allDay: false
-                    },
-                    {
-                        id: 999,
-                        title: 'Erika Tobias',
-                        start: new Date(y, m, d + 4, 16, 0),
-                        allDay: false
-                    },
-                    {
-                        title: 'Jonathan Lopez',
-                        start: new Date(y, m, d, 10, 00),
-                        end: new Date(y, m, d, 12, 00),
-                        allDay: false
-                    },
-                    {
-                        title: 'Edicson Gomez',
-                        start: new Date(y, m, d, 12, 0),
-                        end: new Date(y, m, d, 14, 0),
-                        allDay: false
-                    },
-                    {
-                        title: 'Juan Gomez',
-                        start: new Date(y, m, d + 1, 19, 0),
-                        end: new Date(y, m, d + 1, 22, 30),
-                        allDay: false
-                    },
-                    {
-                        title: 'Camilo Buitrago',
-                        start: new Date(y, m, 28),
-                        end: new Date(y, m, 29),
-                        url: 'http://google.com/'
+                        title: 'All Day Event',
+                        start: new Date(y, m, 18)
+                    }],
+                eventClick: function(event) {
+                    if (confirm("Esta seguro(a) de elimiar la cita?")) {
+                        $('#calendar').fullCalendar('removeEvents', event._id);
                     }
-                ]
+                },
+                eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
+                    /* alert(
+                     //event.title + 
+                     " Cambio detectado" 
+                     //+dayDelta + " days and " +
+                     //minuteDelta + " minutes."
+                     );
+                     
+                     if (allDay) {
+                     alert("Seleccion multimple de días");
+                     } else {
+                     ;// alert("El evento ha sido asignado para un dia");
+                     }*/
+                    if (!confirm("Esta seguro(a) de realizar el cambio para esta cita?")) {
+                        revertFunc();
+                    }
+                },
             });
 
         });
-
     </script>
-    <style>
-
-        body {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 14px;
-            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-        }
-
-        #calendar {
-            width: 800px;
-            float:left;
-        }
-
-    </style>
-
-    
     <div id='calendar' class="tbBorde"></div>
 </section>

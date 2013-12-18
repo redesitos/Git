@@ -174,7 +174,7 @@ jQuery(function(){
 
 
 	//Cargo los tratamientos
-	$.getJSON('/SISBIUD-ODONTOLOGIA/public/js/tratamientos.js', function(d){
+	$.getJSON('/SISBIUD-ODONTOLOGIA/public/odontograma/js/tratamientos.js', function(d){
 		for (var i = d.length - 1; i >= 0; i--) {
 			var tratamiento = d[i];
 			vm.tratamientosPosibles.push(tratamiento);
