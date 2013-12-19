@@ -1,209 +1,279 @@
+<script>
+    $(document).ready(function() {
+        //Inicializamos la libreria validadora para el formulario con id (nombre), "frmCrear"
+        $("#frmHisotoriaUrgencia").validationEngine();
+    });
+
+    $('#btnGuardar').click(function() {
+
+        //Si el formulario esta validado, entonces...
+        if ($('#frmHisotoriaUrgencia').validationEngine('validate')) {
+            alert("Datos almacenado satisfactoriamente");
+        }
+
+    });
+</script>
+
 <div id="divNuevoArticulo"  class="fancyNormal" style="overflow: hidden"> 
-    <form class="tbBorde" id="hisotoriaUrgencia" style="text-align: left">
-    <table class="centrar">
+    <form class="tbBorde" id="frmHisotoriaUrgencia" style="text-align: left">
+        <table class="centrar">
 
 
-        <tr>
-            <td colspan="6" align="center">
-                <H4 class="panel panel-primary btn-primary">DATOS BASICOS</H4>
-                <br>
-                <br>
-            </td>
-        </tr>
-        <br>
-        <tr>
-            <td>
-                Nombres y Apellidos
-            </td>
-            <td colspan="5">
-                <input type="text" class="form-control" id="txtNombreApellido">
-            </td>
+            <tr>
+                <td colspan="6" align="center">
+                    <H4 class="panel panel-primary btn-primary">DATOS BASICOS</H4>
+                    <br>
+                    <br>
+                </td>
+            </tr>
+            <br>
+            <tr>
+                <td>
+                    Nombres y Apellidos
+                </td>
+                <td colspan="5">
+                    <input type="text" class="form-control" 
+                           id="txtNombreApellido"
+                           data-validation-engine="validate[required]">
+                </td>
 
-        </tr>
-        <tr>
-             <td>
-                Código
-            </td>
-            <td colspan="1">
-                <input type="text" class="form-control" id="txtCodigo">
-            </td>
-             <td>
-                Fecha de Nacimiento
-            </td>
-            <td>
-                <input type="text" class="form-control" id="txtFechaNacimiento">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Edad
-            </td>
-            <td>
-                <input type="text" class="form-control" id="txtEdad">
-            </td>
-            <td>
-                Documento Identidad
-            </td>
-            <td>
-                <input type="text" class="form-control" id="txtDocIdentidad">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                 <hr>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Tipo Vinculacion
-            </td>
-            <td>
-               <select class="form-control" id="selTivinculacion">
-                    <option value="-1">-- SELECCIONE --</option>
-                    <option value="1">Estudiante</option>
-                    <option value="1">Funcionario</option>
-                    <option value="1">Vinculación Especial</option>
-               </select> 
-            </td>
-            <td>
-                Proyecto Curricular
-            </td>
-            <td>
-                <select class="form-control" id="selProyCurricular">
-                    <option value="-1">-- SELECCIONE --</option>
-                    <option value="1">T. Sistemas</option>
-                    <option value="1">T. Electrónica</option>
-                    <option value="1">T. Mecánica</option>
-                    <option value="1">T. Inustrial</option>
-                    <option value="1">T. Eléctrica</option>
-                </select> 
-            </td>
-           
-        </tr>
-        <tr>
-             <td>
-                Dependencia
-            </td>
-            <td>
-                <input type="text" class="form-control" id="txtDependencia">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                EPS
-            </td>
-            <td>
-                <input type="text" class="form-controlPequenio" id="txtEps"> 
-            </td>
-            <td>
-                sexo
-            </td>
-            <td>
-               <input type="text" class="form-controlPequenio" id="txtDependencia"> 
-            </td>
             </tr>
             <tr>
-                 <td>
-                Estado civil
-            </td>
                 <td>
-              <select class="form-control form-control" id="selEstadoCivil">
-                    <option value="-1">-- SELECCIONE --</option>
-                    <option value="1">Casado(a)</option>
-                    <option value="1">Soltero(a)</option>
-                    <option value="1">Union Libre</option>
-                </select>   
-            </td>
+                    Código
+                </td>
+                <td colspan="1">
+                    <input type="text" class="form-control" id="txtCodigo"
+                           data-validation-engine="validate[required]">
+                </td>
+                <td>
+                    Fecha de Nacimiento
+                </td>
+                <td>
+                    <input type="text" class="form-control" 
+                           id="txtFechaNacimiento"
+                           data-validation-engine="validate[required]">
+                </td>
             </tr>
-        <tr>
-            <td colspan="4">
-                 <hr>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Procedente de
-            </td>
-            <td colspan="4">
-                <input type="text" class="form-control" id="txtProcedente">
-            </td>
-        </tr>
-        <tr>
-             <td>
-                Dirección Actual de Residencia
-            </td>
-            <td>
-                <input type="text" class="form-control" id="txtDireccionActual">
-            </td>
-            <td>
-                Teléfono
-            </td>
-            <td>
-                <input type="text" class="form-control" id="txtTelefono">
-            </td>
-            
-        </tr>
-         <tr>
-            <td colspan="6">
-                <hr>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 140px"> 
-                En emergencia Llamar a:
-            </td>
-            <td colspan="3"> 
-               <input type="text" class="form-control" id="txtEmergencia"> 
-            </td>           
-        </tr>
-        <tr>
-            <td>Parentesco</td>
-            <td> 
-               <input type="text" class="form-control" id="txtParentesco"> 
-            </td>
-            <td>
-             Dirección   
-            </td>
-            <td>
-             <input type="text" class="form-control" id="txtDireccionAcompa">    
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Teléfonos
-            </td>
-            <td>
-                <input type="text" class="form-control" id="txtTel1">    
-            </td>
-            <td>
-                <input type="text" class="form-control" id="txttel2">    
-            </td>
-        </tr>
-        <tr>
-            <td colspan="6">
-                <hr>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="6" align="center">
-                <table class="centrar">
-                    <tbody><tr>
+            <tr>
+                <td>
+                    Edad
+                </td>
+                <td>
+                    <input type="text" class="form-control" 
+                           id="txtEdad"
+                           data-validation-engine="validate[required]">
+                </td>
+                <td>
+                    Documento Identidad
+                </td>
+                <td>
+                    <input type="text" class="form-control" 
+                           id="txtDocIdentidad"
+                           data-validation-engine="validate[required]">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Tipo Vinculacion
+                </td>
+                <td>
+                    <select class="form-control" id="selTivinculacion"
+                            data-validation-engine="validate[required]"
+                            data-errormessage="Elija una opcion">
+                        <option value="">-- SELECCIONE --</option>
+                        <option value="1">Estudiante</option>
+                        <option value="1">Funcionario</option>
+                        <option value="1">Vinculación Especial</option>
+                    </select> 
+                </td>
+                <td>
+                    Proyecto Curricular
+                </td>
+                <td>
+                    <select class="form-control" id="selProyCurricular"
+                            data-validation-engine="validate[required]"
+                            data-errormessage="Elija una opcion">
+                        <option value="">-- SELECCIONE --</option>
+                        <option value="1">	Administración Ambiental	</option>
+                        <option value="2">	Administración Deportiva	</option>
+                        <option value="3">	Arte Danzario	</option>
+                        <option value="4">	Artes Escénicas	</option>
+                        <option value="5">	Artes Musicales	</option>
+                        <option value="6">	Artes Plásticas y Visuales	</option>
+                        <option value="7">	Ingeniería Ambiental	</option>
+                        <option value="8">	Ingeniería Catastral y Geodesia - ICG	</option>
+                        <option value="9">	Ingeniería Civil	</option>
+                        <option value="10">	Ingeniería de Producción	</option>
+                        <option value="11">	Ingeniería de Sistemas	</option>
+                        <option value="12">	Ingeniería Eléctrica	</option>
+                        <option value="13">	Ingeniería Eléctrica por Ciclos Propedéuticos	</option>
+                        <option value="14">	Ingeniería Electrónica	</option>
+                        <option value="15">	Ingeniería en Control	</option>
+                        <option value="16">	Ingeniería en Distribución y Redes Eléctricas	</option>
+                        <option value="17">	Ingeniería en Telecomunicaciones	</option>
+                        <option value="18">	Ingeniería en Telemática	</option>
+                        <option value="19">	Ingeniería Forestal	</option>
+                        <option value="20">	Ingeniería Industrial	</option>
+                        <option value="21">	Ingeniería Mecánica	</option>
+                        <option value="22">	Ingeniería Sanitaria	</option>
+                        <option value="23">	Ingeniería Topográfica	</option>
+                        <option value="24">	Licenciatura en Biología	</option>
+                        <option value="25">	Licenciatura en Educación Básica con Énfasis en Ciencias Sociales	</option>
+                        <option value="26">	Licenciatura en Educación Básica con Énfasis en Educación Artística	</option>
+                        <option value="27">	Licenciatura en Educación Básica con Énfasis en Humanidades y Lengua Castellana	</option>
+                        <option value="28">	Licenciatura en Educación Básica con Énfasis en Inglés	</option>
+                        <option value="29">	Licenciatura en Educación Básica con Énfasis en Matemáticas	</option>
+                        <option value="30">	Licenciatura en Física	</option>
+                        <option value="31">	Licenciatura en Pedagogía Infantil	</option>
+                        <option value="32">	Licenciatura en Química	</option>
+                        <option value="33">	Matemáticas	</option>
+                        <option value="34">	Tecnología Industrial	</option>
+                        <option value="35">	Tecnología Electrónica	</option>
+                        <option value="36">	Tecnología en Administración Deportiva	</option>
+                        <option value="37">	Tecnología en Construcciones Civiles	</option>
+                        <option value="38">	Tecnología en Electricidad	</option>
+                        <option value="39">	Tecnología en Gestión Ambiental y Servicios Públicos	</option>
+                        <option value="40">	Tecnología en Saneamiento Ambiental	</option>
+                        <option value="41">	Tecnología en Sistematización de Datos	</option>
+                        <option value="42">	Tecnología en Topografía	</option>
+                        <option value="43">	Tecnología Mecánica	</option>
+                    </select> 
+                </td>
 
-                            <td align="center" colspan="6">
-                                <input type="button" class="btn-primary btn-large" value="Guardar"> 
-                            </td>
+            </tr>
+            <tr>
+                <td>
+                    Dependencia
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="txtDependencia">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    EPS
+                </td>
+                <td>
+                    <input type="text" class="form-controlPequenio" id="txtEps"> 
+                </td>
+                <td>
+                    sexo
+                </td>
+                <td>
+                    <input type="text" class="form-controlPequenio" id="txtDependencia"> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Estado civil
+                </td>
+                <td>
+                    <select class="form-control form-control" id="selEstadoCivil"
+                            data-validation-engine="validate[required]"
+                            data-errormessage="Elija una opcion">
+                        <option value="">-- SELECCIONE --</option>
+                        <option value="1">Casado(a)</option>
+                        <option value="1">Soltero(a)</option>
+                        <option value="1">Union Libre</option>
+                    </select>   
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Procedente de
+                </td>
+                <td colspan="4">
+                    <input type="text" class="form-control" id="txtProcedente">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Dirección Actual de Residencia
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="txtDireccionActual">
+                </td>
+                <td>
+                    Teléfono
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="txtTelefono">
+                </td>
 
-                        </tr>
-                    <br>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <br>    
-            </td>
-        </tr>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 140px"> 
+                    En emergencia Llamar a:
+                </td>
+                <td colspan="3"> 
+                    <input type="text" class="form-control" id="txtEmergencia"> 
+                </td>           
+            </tr>
+            <tr>
+                <td>Parentesco</td>
+                <td> 
+                    <input type="text" class="form-control" id="txtParentesco"> 
+                </td>
+                <td>
+                    Dirección   
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="txtDireccionAcompa">    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Teléfonos
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="txtTel1">    
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="txttel2">    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6" align="center">
+                    <table class="centrar">
+                        <tbody><tr>
+
+                                <td align="center" colspan="6">
+                                    <input type="submit" class="btn-primary btn-large" 
+                                           id="btnGuardar" value="Guardar"> 
+                                </td>
+
+                            </tr>
+                        <br>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br>    
+                </td>
+            </tr>
         </table>
     </form>
 </div>

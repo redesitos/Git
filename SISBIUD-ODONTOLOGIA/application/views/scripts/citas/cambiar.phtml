@@ -1,72 +1,114 @@
-<link rel="stylesheet" href="<?php echo $this->baseUrl; ?>/validador/fancyBox/jquery.fancybox-1.3.4.css" type="text/css"/> 
-<div>
-    <!-- CSS concatenated and minified via ant build script-->
-    <link rel="stylesheet" href="<?php echo $this->baseUrl; ?>/odontograma/css/style.css">
-    <link rel="stylesheet" href="<?php echo $this->baseUrl; ?>/odontograma/css/jquery-ui-1.8.17.custom.css">
-    <link rel="stylesheet" href="<?php echo $this->baseUrl; ?>/odontograma/css/jquery.svg.css">
-    <link rel="stylesheet" href="<?php echo $this->baseUrl; ?>/odontograma/css/odontograma.css">
-    <!-- end CSS-->
-    <!--jquery-->
-    <script src="<?php echo $this->baseUrl; ?>/odontograma/js/modernizr-2.0.6.min.js"></script>
-    <!--jquery-->
+<section>
+    <!--fancyBox-->
+<!--    <link href='<?php echo $this->baseUrl; ?>/validador/fancyBox/jquery.fancyBox-1.3.4.css' rel='stylesheet' />
+    <script src='<?php echo $this->baseUrl; ?>/validador/fancyBox/jquery.fancybox-1.3.4.pack.js'></script>-->
+    <!--librerias normales-->
+    <link href='<?php echo $this->baseUrl; ?>/calendario/fullcalendar/fullcalendar.css' rel='stylesheet' />
+    <link href='<?php echo $this->baseUrl; ?>/calendario/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <script src='<?php echo $this->baseUrl; ?>/calendario/fullcalendar/gcal.js'></script>
+    <script src='<?php echo $this->baseUrl; ?>/calendario/lib/jquery-ui.custom.min.js'></script>
+    <script src='<?php echo $this->baseUrl; ?>/calendario/fullcalendar/fullcalendar.min.js'></script>
+    <script>
 
-    <!--div de codigo-->
-    <div id="container">
-        <header>
-            <h1>Odontograma<h1>
-                    </header>
-                    <div id="main" role="main">      
-                        
-                        <div id="odontograma-wrapper">
-                            <div id="odontograma"></div>
-                        <div id="tratamiento">
-                            <h2>Tratamiento</h2>
-                            <select 
-                                data-bind=" options: tratamientosPosibles, 
-                                value: tratamientoSeleccionado, 
-                                optionsText: function(item){ return item.nombre; },
-                                optionsCaption: 'Seleccione un tratamiento...'">
-                            </select>
-                            <ul data-bind="foreach: tratamientosAplicados">
-                                <li>
-                                    P<span data-bind="text: diente.id"></span><span data-bind="text: cara"></span>
-                                    -            
-                                    <span data-bind="text: tratamiento.nombre"></span>
-                                    | 
-                                    <a href="#" data-bind="click: $parent.quitarTratamiento">Eliminar</a>
-                                </li>
-                            </ul>
-                        </div>
-                        </div>
-                        
-                        
-                    </div>
-                    <!--div de codigo>
-                
-                    <!-- scripts concatenated and minified via ant build script-->
-                    <!--<script defer src="<?php echo $this->baseUrl; ?>/js/jquery-1.7.1.min.js"></script>-->
-                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/plugins.js"></script>
-                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/jquery-ui-1.8.17.custom.min.js"></script>
-                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/jquery.tmpl.js"></script>
-                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/knockout-2.0.0.js"></script>
-                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/jquery.svg.min.js"></script>  
-                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/jquery.svggraph.min.js"></script>  
-                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/odontograma.js"></script>
-                    <!-- end scripts-->
-                    <!-- Change UA-XXXXX-X to be your site's ID -->
-                    <script>
-                        window._gaq = [['_setAccount', 'UAXXXXXXXX1'], ['_trackPageview'], ['_trackPageLoadTime']];
-                        Modernizr.load({
-                            load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
-                        });
-                    </script>
+        $(document).ready(function() {
 
-
-                    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-                         chromium.org/developers/how-tos/chrome-frame-getting-started -->
-                    <!--[if lt IE 7 ]>
-                      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-                      <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-                    <![endif]-->
-                    </div>
-</div>
+            var date = new Date();
+            var d = date.getDate();
+            var m = date.getMonth();
+            var y = date.getFullYear();
+            var calendar = $('#calendar').fullCalendar({
+                /*dayClick: function(date, allDay, jsEvent, view) {
+                 var today = new Date();
+                 if (today.getHours() != 0 && today.getMinutes() != 0 &&
+                 today.getSeconds() != 0 && today.getMilliseconds() != 0) {
+                 today.setHours(0, 0, 0, 0);
+                 }
+                 if (date < today) {
+                 alert("Past Date");
+                 }
+                 }
+                 , */hiddenDays: [0, 6],
+                allDay: false,
+                firstDay: 1,
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miercoles',
+                    'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                minTime: 6,
+                maxTime: 18,
+                timeFormat: {
+                    agenda: 'H(:mm)' //h:mm{ - h:mm}'
+                },
+                buttonText:
+                        {
+                            prev: ' ◄ ',
+                            next: ' ► ',
+                            prevYear: ' &lt;&lt; ',
+                            nextYear: ' &gt;&gt; ',
+                            today: 'hoy',
+                            month: 'mes',
+                            week: 'semana',
+                            day: 'día'
+                        },
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'agendaDay,agendaWeek,month'
+                },
+                defaultView: 'agendaDay',
+                selectable: true,
+                selectHelper: true,
+                editable: true,
+                events: [
+                    {
+                        id: 1,
+                        title: "20072073050 - Tecnología en electronica - 7564857 - Juan Camilo Rodriguez Soza",
+                        start: new Date(y, m, 18, 15, 0),
+                        end: new Date(y, m, 18, 16, 0),
+                        allDay: false
+                    },
+                    {
+                        id: 2,
+                        title: "20091078080 - Ingenieria en Telematica - 4225678 - Marcela Chavarro Lopez Tapiero",
+                        start: new Date(y, m, 13, 14, 0),
+                        end: new Date(y, m, 13, 15, 0),
+                        allDay: false
+                    },
+                    {
+                        id: 3,
+                        title: "20072073050 - Tecnología en electronica - 7564857 - Juan Camilo Rodriguez Soza",
+                        start: new Date(y, m, 16, 7, 0),
+                        end: new Date(y, m, 16, 8, 0),
+                        allDay: false
+                    },
+                    {
+                        id: 4,
+                        title: "20091078080 - Ingenieria en Telematica - 4225678 - Marcela Chavarro Lopez Tapiero",
+                        start: new Date(y, m, 3, 10, 0),
+                        end: new Date(y, m, 3, 11, 0),
+                        allDay: false
+                    },
+                ],
+                eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
+                    /* alert(
+                     //event.title + 
+                     " Cambio detectado" 
+                     //+dayDelta + " days and " +
+                     //minuteDelta + " minutes."
+                     );
+                     
+                     if (allDay) {
+                     alert("Seleccion multimple de días");
+                     } else {
+                     ;// alert("El evento ha sido asignado para un dia");
+                     }*/
+                    if (!confirm("Esta seguro(a) de realizar el cambio para esta cita?")) {
+                        revertFunc();
+                    }
+                },
+            });
+        });
+    </script>
+    <div id='calendar' class="tbBorde"></div>
+</section>

@@ -18,16 +18,16 @@
             var y = date.getFullYear();
             var calendar = $('#calendar').fullCalendar({
                 /*dayClick: function(date, allDay, jsEvent, view) {
-                    var today = new Date();
-                    if (today.getHours() != 0 && today.getMinutes() != 0 &&
-                            today.getSeconds() != 0 && today.getMilliseconds() != 0) {
-                        today.setHours(0, 0, 0, 0);
-                    }
-                    if (date < today) {
-                        alert("Past Date");
-                    }
-                }
-                , */hiddenDays: [0, 6],
+                 var today = new Date();
+                 if (today.getHours() != 0 && today.getMinutes() != 0 &&
+                 today.getSeconds() != 0 && today.getMilliseconds() != 0) {
+                 today.setHours(0, 0, 0, 0);
+                 }
+                 if (date < today) {
+                 alert("Past Date");
+                 }
+                 }
+                 , */hiddenDays: [0, 6],
                 allDay: false,
                 firstDay: 1,
                 monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
@@ -35,6 +35,11 @@
                 dayNames: ['Domingo', 'Lunes', 'Martes', 'Miercoles',
                     'Jueves', 'Viernes', 'Sábado'],
                 dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                minTime: 6,
+                maxTime: 18,
+                timeFormat: {
+                    agenda: 'H(:mm)' //h:mm{ - h:mm}'
+                },
                 buttonText:
                         {
                             prev: ' ◄ ',
@@ -52,56 +57,38 @@
                     right: 'agendaDay,agendaWeek,month'
                 },
                 defaultView: 'agendaDay',
-                selectable: true,
+                selectable: false,
                 selectHelper: true,
-                select: function(start, end, allDay) {
-                    var codigo = prompt('Codigo:');
-                    var proyectocurr = prompt('Proyecto Curricular:');
-                    var numerotel = prompt('Numero de Teléfono:');
-                    var nombre = prompt('Nombre Y Apellido:');
-                    if (codigo, proyectocurr, numerotel, nombre) {
-                        calendar.fullCalendar('renderEvent',
-                                {
-                                    title: codigo + " - " + proyectocurr,
-                                    start: start,
-                                    end: end,
-                                    allDay: allDay
-                                },
-                        true // make the event "stick",
-
-                                );
-                    }
-                    calendar.fullCalendar('unselect');
-
-                },
-                editable: true,
-                events: [{
-                        id: 999,
-                        title: 'All Day Event',
-                        start: new Date(y, m, 18)
-                    }],
-                eventClick: function(event) {
-                    if (confirm("Esta seguro(a) de elimiar la cita?")) {
-                        $('#calendar').fullCalendar('removeEvents', event._id);
-                    }
-                },
-                eventDrop: function(event, dayDelta, minuteDelta, allDay, revertFunc) {
-                    /* alert(
-                     //event.title + 
-                     " Cambio detectado" 
-                     //+dayDelta + " days and " +
-                     //minuteDelta + " minutes."
-                     );
-                     
-                     if (allDay) {
-                     alert("Seleccion multimple de días");
-                     } else {
-                     ;// alert("El evento ha sido asignado para un dia");
-                     }*/
-                    if (!confirm("Esta seguro(a) de realizar el cambio para esta cita?")) {
-                        revertFunc();
-                    }
-                },
+                events: [
+                    {
+                        id: 1,
+                        title: "20072073050 - Tecnología en electronica - 7564857 - Juan Camilo Rodriguez Soza",
+                        start: new Date(y, m, 18, 15, 0),
+                        end: new Date(y, m, 18, 16, 0),
+                        allDay: false
+                    },
+                    {
+                        id: 2,
+                        title: "20091078080 - Ingenieria en Telematica - 4225678 - Marcela Chavarro Lopez Tapiero",
+                        start: new Date(y, m, 13, 14, 0),
+                        end: new Date(y, m, 13, 15, 0),
+                        allDay: false
+                    },
+                    {
+                        id: 3,
+                        title: "20072073050 - Tecnología en electronica - 7564857 - Juan Camilo Rodriguez Soza",
+                        start: new Date(y, m, 16, 7, 0),
+                        end: new Date(y, m, 16, 8, 0),
+                        allDay: false
+                    },
+                    {
+                        id: 4,
+                        title: "20091078080 - Ingenieria en Telematica - 4225678 - Marcela Chavarro Lopez Tapiero",
+                        start: new Date(y, m, 3, 10, 0),
+                        end: new Date(y, m, 3, 11, 0),
+                        allDay: false
+                    },
+                ]
             });
 
         });

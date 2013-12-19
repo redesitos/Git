@@ -18,7 +18,8 @@ function InformacionGeneral() {
     var txtEmergencia = document.getElementById('txtEmergencia').value;
     var txtTelEmergencia = document.getElementById('txtTelEmergencia').value;
     var txaDescripcion = document.getElementById('txaDescripcion').value;
-//    $("#msjconfirmacion").html("<label style='color:green;'>Puede continuar</label>");
+    alert("Datos almacenado satisfactoriamente");
+    //    $("#msjconfirmacion").html("<label style='color:green;'>Puede continuar</label>");
 }//fin de funcion informacion general
 
 
@@ -49,7 +50,7 @@ function Anamnesis() {
     var txtPulso = document.getElementById('txtPulso').value;
     var txtTenArterial = document.getElementById('txtTenArterial').value;
     var txtRespiracion = document.getElementById('txtRespiracion').value;
-
+    alert("Datos almacenado satisfactoriamente");
 //    $("#msjconfirmacion").html("<label style='color:green;'>Puede continuar</label>");
 }//fin de funcion Anamnesis
 
@@ -80,7 +81,7 @@ function ExamenFisico() {
     var selOclusion = document.getElementById('selOclusion').value;
     var txaOtrosFisico = document.getElementById('txaOtrosFisico').value;
     var txaObsFisico = document.getElementById('txaObsFisico').value;
-
+    alert("Datos almacenado satisfactoriamente");
 //    $("#msjconfirmacion").html("<label style='color:green;'>Puede continuar</label>");
 }//fin de funcion ExamenFisico
 
@@ -95,5 +96,6 @@ function TratamientoEjecutado() {
     var txtSupDiente = document.getElementById('txtSupDiente').value;
     var txaActividad = document.getElementById('txaActividad').value;
     var txaFirmaPaciente = document.getElementById('txaFirmaPaciente').value;
+    alert("Datos almacenado satisfactoriamente");
 }
 //fin de funcion tratamiento ejecutado
