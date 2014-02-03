@@ -1,0 +1,75 @@
+<?php echo $this->doctype(); ?>
+<?php
+// module/Application/view/layout/layout.phtml:
+$firephp = \FirePHP::getInstance(true);
+$firephp->info($this->locale);
+$firephp->info($locale);
+?>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+
+    <!-- Le styles -->
+    <?php
+    $idx = 0;
+    echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico'))
+                          ->offsetSetStylesheet(++$idx, $this->basePath() . '/css/bootstrap.min.css')
+                          ->offsetSetStylesheet(++$idx, $this->basePath() . '/css/style.css')
+                          ->offsetSetStylesheet(++$idx, $this->basePath() . '/css/bootstrap-responsive.min.css')
+    ?>
+
+    <!-- Scripts -->
+    <?php
+    $idx = 0;
+    echo $this->headScript()->offsetSetFile(++$idx, $this->basePath() . '/js/html5.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+                            ->offsetSetFile(++$idx, $this->basePath() . '/js/jquery-1.9.1.min.js')
+    ?>
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="<?php echo $this->url('home', array('locale' => $this->locale)); ?>"><?php echo $this->translate('Skeleton Application') ?></a>
+
+          <div class="dropdown" style="float:right">
+              <?php echo $this->partial('layout/languages.phtml', array(
+                    'locales' => $this->locales,
+                    'selected' => $this->locale,
+              )); ?>
+          </div>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="<?php echo $this->url('home', array('locale' => $this->locale)); ?>"><?php echo $this->translate('Home') ?></a></li>
+              <li><a href="<?php echo $this->url('holidays', array('action' => 'list'));?>"><?php echo $this->translate('Holidays calendar'); ?></a></li>
+              <li><a href="<?php echo $this->url('events', array('action' => 'calendar'));?>"><?php echo $this->translate('Events calendar'); ?></a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <?php echo $this->content; ?>
+
+      <hr>
+
+      <footer>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>
