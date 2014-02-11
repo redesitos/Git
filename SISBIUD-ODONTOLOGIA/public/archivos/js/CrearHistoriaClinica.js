@@ -1,6 +1,9 @@
 //funcion InformacionGeneral
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> cfcd1e8dd83d297e6d89108c6f1b9bb9076973d6
 function InformacionGeneral() {
     if ($('#frmInfoGeneral').validationEngine('validate'))
         ;
@@ -100,6 +103,7 @@ function TratamientoEjecutado() {
     var txaFirmaPaciente = document.getElementById('txaFirmaPaciente').value;
     alert("Datos almacenado satisfactoriamente");
 }
+<<<<<<< HEAD
 //fin de funcion tratamiento ejecutado
 
 function llenarSelects(caso){
@@ -252,3 +256,6 @@ function llenarSelect(arrayFacultades, combo) {
         //muestraVentana(elError);
     }
 }
+=======
+//fin de funcion tratamiento ejecutado
+>>>>>>> cfcd1e8dd83d297e6d89108c6f1b9bb9076973d6
