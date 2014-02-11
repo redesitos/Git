@@ -1,4 +1,77 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>HistoriaClinica</b> and script/action name <b>index</b></p>
-</div>
+<link rel="stylesheet" href="<?php echo $this->baseUrl; ?>/validador/fancyBox/jquery.fancybox-1.3.4.css" type="text/css"/> 
+<div>
+    <!-- CSS concatenated and minified via ant build script-->
+    <link rel="stylesheet" href="<?php echo $this->baseUrl; ?>/odontograma/css/style.css">
+    <link rel="stylesheet" href="<?php echo $this->baseUrl; ?>/odontograma/css/jquery-ui-1.8.17.custom.css">
+    <link rel="stylesheet" href="<?php echo $this->baseUrl; ?>/odontograma/css/jquery.svg.css">
+    <link rel="stylesheet" href="<?php echo $this->baseUrl; ?>/odontograma/css/odontograma.css">
+    <!-- end CSS-->
+    <!--jquery-->
+    <script src="<?php echo $this->baseUrl; ?>/odontograma/js/modernizr-2.0.6.min.js"></script>
+    <!--jquery-->
+
+    <!--div de codigo-->
+    <div id="container">
+        <header>
+            <h1>Odontograma<h1>
+                    </header>
+                    <div id="main" role="main">      
+
+                        <div id="odontograma-wrapper">
+                            <div id="odontograma"></div>
+                            <div id="tratamiento">
+                                <h2>Tratamiento</h2>
+                                <select 
+                                    data-bind=" options: tratamientosPosibles, 
+                                    value: tratamientoSeleccionado, 
+                                    optionsText: function(item){ return item.nombre; },
+                                    optionsCaption: 'Seleccione un tratamiento...'">
+                                </select>
+                                <ul data-bind="foreach: tratamientosAplicados">
+                                    <li>
+                                        P<span data-bind="text: diente.id"></span><span data-bind="text: cara"></span>
+                                        -            
+                                        <span data-bind="text: tratamiento.nombre"></span>
+                                        | 
+                                        <a href="#" data-bind="click: $parent.quitarTratamiento">Eliminar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--div de codigo>
+                
+                    <!-- scripts concatenated and minified via ant build script-->
+                    <!--<script defer src="<?php echo $this->baseUrl; ?>/js/jquery-1.7.1.min.js"></script>-->
+                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/plugins.js"></script>
+                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/jquery-ui-1.8.17.custom.min.js"></script>
+                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/jquery.tmpl.js"></script>
+                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/knockout-2.0.0.js"></script>
+                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/jquery.svg.min.js"></script>  
+                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/jquery.svggraph.min.js"></script>  
+                    <script defer src="<?php echo $this->baseUrl; ?>/odontograma/js/odontograma.js"></script>
+                    <!-- end scripts-->
+                    <!-- Change UA-XXXXX-X to be your site's ID -->
+                    <script>
+                        window._gaq = [['_setAccount', 'UAXXXXXXXX1'], ['_trackPageview'], ['_trackPageLoadTime']];
+                        Modernizr.load({
+                            load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+                        });
+                    </script>
+
+                    <script>
+                        function validar() {
+                            alert("El odontograma ha sido almacenado satisfactoriamente");
+                        }
+                    </script>
+                    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+                         chromium.org/developers/how-tos/chrome-frame-getting-started -->
+                    <!--[if lt IE 7 ]>
+                      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+                      <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+                    <![endif]-->
+                    <input type="button" onclick="validar();" value="Guardar">
+                    </div>
+                    </div>
